@@ -12,38 +12,72 @@
 
 
     <header>
-      <nav>
-          <div class="logo">
-              <img src="./" alt="">
-          </div>
-          <ul>
-              <li>Gallery</li>
-              <li>Memes</li>
-              <li>About</li>
-          </ul>
-      </nav>
+        <nav class="nav-bar flex ">
+            <div class="container flex space-around align-center">
+
+                <div class="logo ">
+                    <img src="./DESIGN/LOGO/LOGO.png" alt="">
+                </div>
+                <ul class="clean-list flex">
+                    <li onclick="getSection(this)" class="flex align-center justify-center">Gallery</li>
+                    <li onclick="getSection(this)" class="flex align-center justify-center">Memes</li>
+                    <li onclick="getSection(this)" class="flex align-center justify-center">About</li>
+                </ul>
+        </nav>
+        </div>
 
     </header>
 
 
-<div class="container flex align-center justify-center">
+    <!-- GALLERY SECTION -->
+    <div class="gallery-container container flex space-around wrap">
+        <input type="text" placeholder="SEARCH">
+<div class="imgs"></div>
 
-    <div class="flex ">
-        
-        <div class="canvas-cotainer">
-            <canvas id="my-canvas" height="500" width="500"></canvas>
-        </div>
-        <div class="tools-container">
-            
-        </div>
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
     </div>
-    
-</div>
+
+
+
+
+
+
+    <!-- MEME GENERATOR SECTION -->
+    <div class="meme-container container flex align-center justify-center hidden">
+
+        <div class="flex ">
+            <div class="canvas-cotainer">
+                <canvas id="my-canvas" height="500" width="500"></canvas>
+            </div>
+
+            <div class="tools-container">
+
+                <input type="text" placeholder="add text here">
+                <button class="add">add text</button>
+                <button class="font">Add Text Line</button>
+                <button class="line-up">lineUp</button>
+                <button class="line-down">lineDown</button>
+                <button class="font">Font-Color</button>
+                <button class="font">Choose Font</button>
+                <button class="font">Stroke Color</button>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
 
 
 

@@ -2,13 +2,19 @@ body{
     margin:0;
 }
 
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
 
 .container{
-    width:1500px;
-    height: 50rem;
+    width:1300px;
     margin:0 auto;
+    border:1px solid red;
 }
-
+.hidden{
+    visibility: hidden;
+}
 
 canvas{
     display: block;
@@ -23,8 +29,29 @@ canvas{
     height:500px;
 }
 
+nav{
+    height: 130px;
+    background-color: lightblue;
+}
 
+nav li{
+  display:inline-block;
+  width:100px;
+  height: 100px;
+    font-size: 1.258rem;
+}
 
+nav li:not(:last-child){
+    margin-inline-end:5.875rem;
+}
+nav li:hover{
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px 4px rgba(222,152,31,1);
+}
+
+.logo img{
+    width:200px;
+}
 
 
 
@@ -35,6 +62,9 @@ canvas{
 .space-around{
     justify-content: space-around;
 }
+.space-between{
+    justify-content: space-between;
+}
 .column{
     flex-direction: column;
 }
@@ -43,4 +73,7 @@ canvas{
 }
 .align-center{
     align-items: center;
+}
+.wrap{
+    flex-wrap: wrap;
 }
