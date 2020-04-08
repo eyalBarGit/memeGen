@@ -5,89 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<body>
-
+<body onload="initPage()">
 
     <header>
         <nav class="nav-bar flex ">
             <div class="container flex space-around align-center">
-
                 <div class="logo ">
                     <img src="./DESIGN/LOGO/LOGO.png" alt="">
                 </div>
                 <ul class="clean-list flex">
-                    <li onclick="getSection(this)" class="flex align-center justify-center">Gallery</li>
-                    <li onclick="getSection(this)" class="flex align-center justify-center">Memes</li>
-                    <li onclick="getSection(this)" class="flex align-center justify-center">About</li>
+                    <li onclick="getSection(this)" class="flex align-center justify-center">GALLERY</li>
+                    <li onclick="getSection(this)" class="flex align-center justify-center">MEMES</li>
+                    <li onclick="openAboutModal()" class="flex align-center justify-center">ABOUT</li>
                 </ul>
         </nav>
         </div>
-
     </header>
 
 
     <!-- GALLERY SECTION -->
-    <div class="gallery-container container flex space-around wrap">
-        <input type="text" placeholder="SEARCH">
-<div class="imgs"></div>
+    <section class="gallery-container container flex column">
+        <div class="keywords-section flex justify-center ">
+            <input type="text" placeholder="SEARCH">
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
-
+        <div class="photo-container ">
+            <div class="imgs flex justify-center wrap"></div>
+        </div>
+    </section>
 
 
 
     <!-- MEME GENERATOR SECTION -->
-    <div class="meme-container container flex align-center justify-center hidden">
+    <section class="meme-container container flex justify-center  hidden">
+        <div class="flex">
 
-        <div class="flex ">
+            <!-- CANVAS -->
             <div class="canvas-cotainer">
                 <canvas id="my-canvas" height="500" width="500"></canvas>
             </div>
 
-            <div class="tools-container">
+            <!-- CONTROLLS -->
+            <div class="control-box flex column wrap  align-center">
+                <div class="tools flex column ">
 
-                <input type="text" placeholder="add text here">
-                <button class="add">add text</button>
-                <button class="font">Add Text Line</button>
-                <button class="line-up">lineUp</button>
-                <button class="line-down">lineDown</button>
-                <button class="font">Font-Color</button>
-                <button class="font">Choose Font</button>
-                <button class="font">Stroke Color</button>
+                    <div class="add-text-section bottom flex column">
+                        <input type="text" placeholder="add text here"></input>
+                        <button class="btn-tool-box add width-100">add text</button>
+                    </div>
+
+                    <div class="flex space-around bottom">
+                        <button class="far fa-trash-alt fa-2x "></button>
+                        <button class="fas fa-plus fa-2x " onclick="createNewLine()"></button>
+                        <button class="fas fa-arrow-up fa-2x"></button>
+                        <button class="fas fa-arrow-down fa-2x"></button>
+                    </div>
+
+                    <div class="flex wrap space-around bottom">
+                        <button class="fas fa-align-left fa-2x"></button>
+                        <button class="fas fa-align-center fa-2x"></button>
+                        <button class="fas fa-align-right fa-2x "></button>
+                    </div>
+
+                    <div class="flex wrap bottom space-around">
+                        <select onchange="getFont(this)" name="select-font">
+                            <option value="">Fonts</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                        </select>
+                        <label for="">font<br>color:</label>
+                        <input type="color" class="fas fa-2x"></input>
+                        <label for="">stroke<br>color:</label>
+                        <input type="color" class="fas fa-2x"></input>
+                    </div>
+                </div>
+                <div class="share-save-buttons flex ">
+                    <button class="fab fa-facebook-square fa-2x"></button>
+                    <button class="fas fa-download fa-2x"></button>
+                </div>
             </div>
-
-
-
-
-
         </div>
-
-    </div>
-
+    </section>
 
 
 
-
-
-
-
-
-    <script src="./js/can-service.js"></script>
+    <script src="./js/meme-service.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/main.js"></script>
 </body>

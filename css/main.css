@@ -1,57 +1,114 @@
+/* INITIALIZE */
 body{
     margin:0;
 }
-
 .clean-list {
     list-style-type: none;
     margin: 0;
-    padding: 0; }
-
+    padding: 0; 
+}
 .container{
     width:1300px;
     margin:0 auto;
-    border:1px solid red;
 }
 .hidden{
-    visibility: hidden;
+visibility: hidden;
 }
-
 canvas{
     display: block;
     /* margin: auto; */
     border:2px solid black
 }
-
-
-.tools-container{
-    border:2px solid black;
-    width:500px;
-    height:500px;
+.width-100{
+    width:100% !important;
 }
-
 nav{
     height: 130px;
-    background-color: lightblue;
+    background-image: linear-gradient(to right top, #6ec0e3, #85c8e4, #9ad0e5, #aed7e7, #c2dfe9);
 }
-
 nav li{
   display:inline-block;
   width:100px;
   height: 100px;
     font-size: 1.258rem;
+    font-family: 'Montserrat', sans-serif;
 }
-
 nav li:not(:last-child){
     margin-inline-end:5.875rem;
 }
 nav li:hover{
     cursor: pointer;
-    box-shadow: inset 0px 0px 0px 4px rgba(222,152,31,1);
+    box-shadow: inset 0px -7px 0px 0px rgba(255,182,13,1);
 }
-
 .logo img{
     width:200px;
 }
+.bottom{
+    margin-block-end: 15px;
+}
+
+
+
+/*-------- MEME SECTION ----------*/
+.meme-container{
+    position: relative;
+margin-top:-600px;
+}
+
+.control-box{
+    width:500px;
+    height:500px;
+}
+.tools{
+    width: 70%; 
+}
+.tools  input{
+height: 50px ;
+}
+.btn-tool-box{
+    width:50px;
+    height: 40px;
+}
+.share-save-buttons button:not(:last-child){
+    margin-inline-end:15px ;
+}
+
+
+
+
+
+/* ---- PHOTOS SECTION ---- */
+.photo-container img{
+    width:210px;
+    height: 205px;
+   margin-inline-end: 5px;
+   margin-block-end: 5px;
+   object-fit: cover;
+   
+}
+
+
+.photo-container img:hover{
+    transform: scale(1.015);
+    cursor: pointer;
+}
+
+
+input.font-color{
+       background-image: url(/images/buttons/add.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}
+
+
+
+
 
 
 
@@ -71,9 +128,18 @@ nav li:hover{
 .justify-center{
     justify-content: center;
 }
+.justify-start{
+    justify-content: flex-start;
+}
 .align-center{
     align-items: center;
 }
+.align-end{
+    align-items: flex-end;
+}
 .wrap{
     flex-wrap: wrap;
+}
+.nowrap{
+    flex-wrap: nowrap;
 }
