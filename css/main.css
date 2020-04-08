@@ -1,0 +1,46 @@
+body{
+    margin:0;
+}
+
+
+.container{
+    width:1500px;
+    height: 50rem;
+    margin:0 auto;
+}
+
+
+canvas{
+    display: block;
+    /* margin: auto; */
+    border:2px solid black
+}
+
+
+.tools-container{
+    border:2px solid black;
+    width:500px;
+    height:500px;
+}
+
+
+
+
+
+
+/* ---FLEX HELPERS--- */
+.flex{
+    display:flex;
+}
+.space-around{
+    justify-content: space-around;
+}
+.column{
+    flex-direction: column;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-center{
+    align-items: center;
+}
