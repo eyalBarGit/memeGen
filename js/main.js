@@ -5,9 +5,12 @@
 var gCanvas;
 var gCtx;
 var gBackgroundImg;
+var gSelectedImg;
+
 function initPage() {
     renderImgs();
     initCanvas();
+
 }
 
 
@@ -21,7 +24,7 @@ function getSection(navItem) {
 function renderImgs() {
     var strHtml = '';
     gImgs.map(img => {
-        strHtml += `<img id="${img.id}" class="square-photo transition" src="${img.url}" onclick="drawImg(this.id)" >`
+        strHtml += `<img id="${img.id}" class="square-photo transition" src="${img.url}" onclick="getSelectedImgID(this.id)" >`
     })
     document.querySelector('.imgs').innerHTML = strHtml
 
@@ -29,19 +32,37 @@ function renderImgs() {
 
 
 
+
 function initCanvas() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d')
-
-    
 }
-function createNewLine(){
 
-    var input = new CanvasInput({
-        canvas: document.getElementById('my-canvas')
-      });
-      return input
+
+function createNewLine() {
+    var txtLine = document.querySelector('.text-line')
+    // txtLine.innerHTML = gMeme.Lines[0].txt;
+    console.log(gMeme.Lines)
+    // document.querySelector('.input-text').innerHTML = `<input type="text"></input>`
+
 }
+
+
+
+
+function toggleVisibility() {
+    document.querySelector('.meme-container').classList.toggle('hidden')
+    document.querySelector('.gallery-container').classList.toggle('hidden')
+}
+
+
+function getSelectedImgID(id) {
+    gMeme.selectedImg = +id;
+    gSelectedImg = gMeme.selectedImg
+
+    drawImg(gSelectedImg)
+}
+
 
 
 function drawImg(imgId) {
@@ -56,7 +77,16 @@ function drawImg(imgId) {
 }
 
 
-function toggleVisibility() {
-    document.querySelector('.meme-container').classList.toggle('hidden')
-    document.querySelector('.gallery-container').classList.toggle('hidden')
+
+
+function drawText(text, x, y) {
+    console.log('drawing')
+    gCtx.lineWidth = '2'
+    gCtx.strokeStyle = 'red'
+    gCtx.fillStyle = 'red'
+    gCtx.font = '40px Ariel'
+    gCtx.textAlign = 'center'
+    gCtx.fillText(text, x, y);
 }
+
+

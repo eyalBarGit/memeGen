@@ -1,4 +1,9 @@
 /* INITIALIZE */
+@font-face{
+    font-family: Impact;
+    src:url(/fonts/impact.ttf)
+}
+
 body{
     margin:0;
 }
@@ -7,6 +12,7 @@ body{
     margin: 0;
     padding: 0; 
 }
+
 .container{
     width:1300px;
     margin:0 auto;
@@ -47,6 +53,20 @@ nav li:hover{
     margin-block-end: 15px;
 }
 
+.text-line{
+    width:100%;
+    height: auto;
+}
+
+.absolute-left{
+    position:absolute;
+    font-family: Impact;
+    top:300px; 
+    font-size: 50px;
+
+  border:1px dotted gray;
+  
+}
 
 
 /*-------- MEME SECTION ----------*/
@@ -73,7 +93,9 @@ height: 50px ;
     margin-inline-end:15px ;
 }
 
-
+.canvas-cotainer{
+    position: relative;
+}
 
 
 
@@ -93,18 +115,6 @@ height: 50px ;
     cursor: pointer;
 }
 
-
-input.font-color{
-       background-image: url(/images/buttons/add.png); /* 16px x 16px */
-    background-color: transparent; /* make the button transparent */
-    background-repeat: no-repeat;  /* make the background image appear only once */
-    background-position: 0px 0px;  /* equivalent to 'top left' */
-    border: none;           /* assuming we don't want any borders */
-    cursor: pointer;        /* make the cursor like hovering over an <a> element */
-    height: 16px;           /* make this the size of your image */
-    padding-left: 16px;     /* make text start to the right of the image */
-    vertical-align: middle; /* align the text vertically centered */
-}
 
 
 
