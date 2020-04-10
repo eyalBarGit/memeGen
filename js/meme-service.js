@@ -34,11 +34,12 @@ var gMeme = {
     selectedLineIdx: 0,
     Lines: [
         {
-            posX:gCanvas.width/2,
-            posY:gCanvas.height - 410,
-            txt: 'I never eat Falafel',
+            posX:gCanvas.offsetWidth/2,
+            posY:gCanvas.offsetHeight - 440,
+            txt: 'Change text',
             size: 50,
-            align: 'left',
+            align:'center',
+            // side:250,
             fontColor: 'red',
             stroke: 'white'
         },
@@ -49,6 +50,9 @@ var gMeme = {
 
 function increaseSelectedLineIdx() {
     gMeme.selectedLineIdx++
+}
+function decreaseSelectedLineIdx() {
+    gMeme.selectedLineIdx--
 }
 
 
@@ -75,11 +79,11 @@ function setLines(key, value) {
     gMeme.Lines[gMeme.selectedLineIdx][key] = value
 }
 
-function getgMemeLines(key) {
+function getgMemeLinesKey(key) {
     return gMeme.Lines[gMeme.selectedLineIdx][key]
 }
 
-function getgMemeLinesCount() {
+function getgMemeLines() {
     return gMeme.Lines
 }
 
@@ -91,17 +95,12 @@ function getSelectedImg() {
     return gSelectedImg
 }
 
-
-// function resizeCanvas() {
-//     var elContainer = document.querySelector('.main-try');
-//     gCanvas.width = elContainer.offsetWidth;
-//     gCanvas.height = elContainer.offsetHeight;
-// }
-
-// window.addEventListener('resize', function(){
-//     resizeCanvas()
-//     renderCanvas();
-// }, true)
+function getCanvasWidth(){
+    return gCanvas.offsetWidth
+}
+function getCanvasHeight(){
+    return gCanvas.offsetHeight
+}
 
 function getgCanvas(){
     return gCanvas
@@ -109,7 +108,12 @@ function getgCanvas(){
 function getgCtx(){
     return gCtx;
 }
+function clearInput(){
+    return getInputValue().value = '';
+ 
+}
 
 
-
-
+function resetSelecteLineIdx(){
+    gMeme.selectedLineIdx = 0;
+}

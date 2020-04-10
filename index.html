@@ -61,16 +61,16 @@
                     </div>
 
                     <div class="flex space-around bottom">
-                        <button class="far fa-trash-alt fa-2x "></button>
+                        <button class="far fa-trash-alt fa-2x" onclick="onDeleteLine()"></button>
                         <button class="fas fa-plus fa-2x " onclick="onAddLine()" ></button>
-                        <button class="fas fa-arrow-up fa-2x"></button>
-                        <button class="fas fa-arrow-down fa-2x"></button>
+                        <button class="fas fa-arrow-up fa-2x" onclick="onLineUp()"></button>
+                        <button class="fas fa-arrow-down fa-2x"onclick="onLineDown()"></button>
                     </div>
 
                     <div class="flex wrap space-around bottom">
-                        <button class="fas fa-align-left fa-2x"></button>
-                        <button class="fas fa-align-center fa-2x"></button>
-                        <button class="fas fa-align-right fa-2x "></button>
+                        <button class="fas fa-align-left fa-2x" onclick="onLeftAlign()"></button>
+                        <button class="fas fa-align-center fa-2x"onclick="onCenterAlign()"></button>
+                        <button class="fas fa-align-right fa-2x "onclick="onRightAlign()"></button>
                     </div>
 
                     <div class="flex wrap bottom space-around">
@@ -80,7 +80,10 @@
                             <option value="">3</option>
                             <option value="">4</option>
                         </select>
-                        <button class="font-size-up" onclick="increaseFontSize()">+</button>
+                        <button class="font-size-up" onclick="onIncreaseFontSize()">+</button>
+                        <button class="font-size-down" onclick="onDecreaseFontSize()">-</button>
+                    </div>
+                    <div class="flex wrap bottom space-around">
                         <label for="">font<br>color:</label>
                         <input type="color" class="font-color fas fa-2x" onchange="onSetFontColor(this)"></input>
                         <label for="">stroke<br>color:</label>
@@ -88,8 +91,15 @@
                     </div>
                 </div>
                 <div class="share-save-buttons flex ">
-                    <button class="fab fa-facebook-square fa-2x"></button>
-                    <button class="fas fa-download fa-2x"></button>
+                    <!-- <button class="fab fa-facebook-square fa-2x"></button>
+                    <a class="download-btn fas fa-download fa-2x" onclick="downloadImg(this)" download="my-img.jpg"></a> -->
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="facebook-btn pointer fab fa-facebook-square fa-2x" type="submit"></button>
+                        <a class=" pointer fas fa-download fa-2x"" onclick="downloadImg(this)" download="my-img.jpg"></a>
+                        <div class="share-container"></div>
+                      </form>
+                
                 </div>
             </div>
         </div>

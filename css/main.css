@@ -3,8 +3,11 @@
     font-family: Impact;
     src:url(/fonts/impact.ttf)
 }
-
+*{
+    box-sizing: border-box;
+}
 body{
+    
     margin:0;
 }
 .clean-list {
@@ -57,26 +60,24 @@ nav li:hover{
     width:100%;
     height: auto;
 }
-.text-line{
-    border:1px dotted gray;
 
-}
 .absolute-left{
     position:absolute;
     font-family: Impact;
     top:300px; 
     font-size: 50px;
-
-  
-  
+}
+.pointer{
+    cursor: pointer;
 }
 
 
 /*-------- MEME SECTION ----------*/
 .meme-container{
-border:2px solid black;
-    
-margin-top:-600px;
+    width:80vw;
+    /* border:2px solid green; */
+    position: relative;
+    margin-top:-600px;
 }
 
 .control-box{
@@ -84,8 +85,11 @@ margin-top:-600px;
     height:500px;
 }
 .tools{
-    width: 70%; 
+    position: relative;
+    border:2px solid pink;
+    width: 50%; 
 }
+
 .tools  input{
 height: 50px ;
 }
@@ -120,10 +124,24 @@ height: 50px ;
     cursor: pointer;
 }
 
+.facebook-btn{
+    display: inline-block;
+    margin-bottom: 10px;;
+}
 
-
-
-
+.btn{
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
 
 
 
