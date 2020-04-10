@@ -74,11 +74,9 @@
                     </div>
 
                     <div class="flex wrap bottom space-around">
-                        <select onchange="getFont(this)" name="select-font">
-                            <option value="">Fonts</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
+                        <select onchange="getFont(this.value)" name="select-font">
+                            <option value="Impact">Impact</option>
+                            <option value="Ariel">Ariel</option>
                         </select>
                         <button class="font-size-up" onclick="onIncreaseFontSize()">+</button>
                         <button class="font-size-down" onclick="onDecreaseFontSize()">-</button>

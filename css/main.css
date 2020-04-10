@@ -24,16 +24,17 @@ body{
 visibility: hidden;
 }
 canvas{
-    display: block;
+    /* display: block; */
     /* margin: auto; */
     border:2px solid black
 }
 .width-100{
-    width:100% !important;
+    width:100%;
 }
 nav{
     height: 130px;
     background-image: linear-gradient(to right top, #6ec0e3, #85c8e4, #9ad0e5, #aed7e7, #c2dfe9);
+    border-bottom: 20px solid rgb(255, 176, 87)
 }
 nav li{
   display:inline-block;
@@ -92,6 +93,8 @@ nav li:hover{
 
 .tools  input{
 height: 50px ;
+border-radius: 10px;
+border:1px solid gray;
 }
 .btn-tool-box{
     width:50px;
@@ -105,7 +108,16 @@ height: 50px ;
 
     position: relative;
 }
-
+.fas{
+     border-radius: 5px; 
+    border:1px solid gray;
+}
+.fas:focus{
+    outline: none;
+}
+.fas:hover{
+    cursor: pointer;
+}
 
 
 /* ---- PHOTOS SECTION ---- */

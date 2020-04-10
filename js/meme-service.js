@@ -2,7 +2,7 @@
 var gCanvas = document.querySelector('#my-canvas');;
 var gCtx = gCanvas.getContext('2d');
 var gSelectedImg;
-
+var gFont = 'Impact';
 
 
 var gImgs = [
@@ -34,26 +34,22 @@ var gMeme = {
     selectedLineIdx: 0,
     Lines: [
         {
-            posX:gCanvas.offsetWidth/2,
-            posY:gCanvas.offsetHeight - 440,
+            posX: gCanvas.offsetWidth / 2,
+            posY: gCanvas.offsetHeight - 440,
             txt: 'Change text',
             size: 50,
-            align:'center',
-            // side:250,
-            fontColor: 'red',
-            stroke: 'white'
+            align: 'center',
+            font: 'Impact',
+            side:250,
+            fontColor: 'white',
+            stroke: 'black',
+            bgColor:'RGBA(126,122,136,0.53)'
         },
- 
+
     ]
 }
 
 
-function increaseSelectedLineIdx() {
-    gMeme.selectedLineIdx++
-}
-function decreaseSelectedLineIdx() {
-    gMeme.selectedLineIdx--
-}
 
 
 
@@ -78,6 +74,14 @@ function getFromMeme(key) {
 function setLines(key, value) {
     gMeme.Lines[gMeme.selectedLineIdx][key] = value
 }
+function clearPrevLines(key, value) {
+   
+    gMeme.Lines[gMeme.selectedLineIdx-1][key] = value
+}
+function clearNextLines(key, value) {
+    
+    gMeme.Lines[gMeme.selectedLineIdx+1][key] = value
+}
 
 function getgMemeLinesKey(key) {
     return gMeme.Lines[gMeme.selectedLineIdx][key]
@@ -95,25 +99,82 @@ function getSelectedImg() {
     return gSelectedImg
 }
 
-function getCanvasWidth(){
+function getCanvasWidth() {
     return gCanvas.offsetWidth
 }
-function getCanvasHeight(){
+function getCanvasHeight() {
     return gCanvas.offsetHeight
 }
 
-function getgCanvas(){
+function getgCanvas() {
     return gCanvas
 }
-function getgCtx(){
+function getgCtx() {
     return gCtx;
 }
-function clearInput(){
+function clearInput() {
     return getInputValue().value = '';
- 
+
 }
 
 
-function resetSelecteLineIdx(){
+function resetSelecteLineIdx() {
     gMeme.selectedLineIdx = 0;
+}
+
+function getgFont() {
+    return gFont
+}
+
+
+function downloadImg(elLink) {
+    let imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+           Share   
+        </a>`
+    }
+
+    doUploadImg(elForm, onSuccess);
+}
+
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('http://ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
+}
+
+function clearCanvas() {
+    let canvas = getgCanvas()
+    let ctx = getgCtx();
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+}
+
+
+function increaseSelectedLineIdx() {
+    gMeme.selectedLineIdx++
+}
+function decreaseSelectedLineIdx() {
+    gMeme.selectedLineIdx--
 }
