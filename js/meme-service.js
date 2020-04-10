@@ -1,4 +1,9 @@
 'use strict'
+var gCanvas = document.querySelector('#my-canvas');;
+var gCtx = gCanvas.getContext('2d');
+var gSelectedImg;
+
+
 
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs_(square)/1.jpg', kewords: ['happy'] },
@@ -29,26 +34,82 @@ var gMeme = {
     selectedLineIdx: 0,
     Lines: [
         {
+            posX:gCanvas.width/2,
+            posY:gCanvas.height - 410,
             txt: 'I never eat Falafel',
-            size: 20,
+            size: 50,
             align: 'left',
-            color: 'red'
-        }
-
+            fontColor: 'red',
+            stroke: 'white'
+        },
+ 
     ]
 }
 
 
+function increaseSelectedLineIdx() {
+    gMeme.selectedLineIdx++
+}
 
 
 
 function getItemById(itemId) {
-
-   var item = gImgs.find(item => {
-        if(itemId === item.id){
+    var item = gImgs.find(item => {
+        if (itemId === item.id) {
             return item
         }
     })
     return item
 }
+
+
+function setMeme(key, value) {
+    gMeme[key] = value;
+}
+
+function getFromMeme(key) {
+    return gMeme[key]
+}
+
+function setLines(key, value) {
+    gMeme.Lines[gMeme.selectedLineIdx][key] = value
+}
+
+function getgMemeLines(key) {
+    return gMeme.Lines[gMeme.selectedLineIdx][key]
+}
+
+function getgMemeLinesCount() {
+    return gMeme.Lines
+}
+
+function setgSelectedImg(id) {
+    gSelectedImg = getItemById(id)
+}
+
+function getSelectedImg() {
+    return gSelectedImg
+}
+
+
+// function resizeCanvas() {
+//     var elContainer = document.querySelector('.main-try');
+//     gCanvas.width = elContainer.offsetWidth;
+//     gCanvas.height = elContainer.offsetHeight;
+// }
+
+// window.addEventListener('resize', function(){
+//     resizeCanvas()
+//     renderCanvas();
+// }, true)
+
+function getgCanvas(){
+    return gCanvas
+}
+function getgCtx(){
+    return gCtx;
+}
+
+
+
 

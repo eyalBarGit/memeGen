@@ -31,7 +31,7 @@
     <!-- GALLERY SECTION -->
     <section class="gallery-container container flex column">
         <div class="keywords-section flex justify-center ">
-            <input type="text" placeholder="SEARCH">
+            <input type="text" oninput="" placeholder="SEARCH">
         </div>
 
         <div class="photo-container ">
@@ -46,9 +46,9 @@
         <div class="flex">
 
             <!-- CANVAS -->
-            <div class="canvas-cotainer">
+            <div class="canvas-container">
                 <canvas id="my-canvas" height="500" width="500"></canvas>
-            <div class="text-line absolute-left" contenteditable="true"></div>
+       
             </div>
 
             <!-- CONTROLLS -->
@@ -56,13 +56,13 @@
                 <div class="tools flex column ">
 
                     <div class="add-text-section bottom flex column">
-                        <input type="text" placeholder="add text here"></input>
-                        <button class="btn-tool-box add width-100">add text</button>
+                        <input class="txt-input" oninput="onType()" type="text" placeholder="add text here"></input>
+                        <!-- <button class="btn-tool-box add width-100" onclick="addText()">add text</button> -->
                     </div>
 
                     <div class="flex space-around bottom">
                         <button class="far fa-trash-alt fa-2x "></button>
-                        <button class="fas fa-plus fa-2x " onclick="createNewLine()"></button>
+                        <button class="fas fa-plus fa-2x " onclick="onAddLine()" ></button>
                         <button class="fas fa-arrow-up fa-2x"></button>
                         <button class="fas fa-arrow-down fa-2x"></button>
                     </div>
@@ -80,10 +80,11 @@
                             <option value="">3</option>
                             <option value="">4</option>
                         </select>
+                        <button class="font-size-up" onclick="increaseFontSize()">+</button>
                         <label for="">font<br>color:</label>
-                        <input type="color" class="fas fa-2x"></input>
+                        <input type="color" class="font-color fas fa-2x" onchange="onSetFontColor(this)"></input>
                         <label for="">stroke<br>color:</label>
-                        <input type="color" class="fas fa-2x"></input>
+                        <input type="color" class="stroke-color fas fa-2x" onchange="onSetStrokeColor(this)"></input>
                     </div>
                 </div>
                 <div class="share-save-buttons flex ">
@@ -97,7 +98,7 @@
 
 
     <script src="./js/meme-service.js"></script>
-    <script src="./js/utils.js"></script>
+    <script src="./js/ultils.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

@@ -53,25 +53,29 @@ nav li:hover{
     margin-block-end: 15px;
 }
 
-.text-line{
+.text-line-container{
     width:100%;
     height: auto;
 }
+.text-line{
+    border:1px dotted gray;
 
+}
 .absolute-left{
     position:absolute;
     font-family: Impact;
     top:300px; 
     font-size: 50px;
 
-  border:1px dotted gray;
+  
   
 }
 
 
 /*-------- MEME SECTION ----------*/
 .meme-container{
-    position: relative;
+border:2px solid black;
+    
 margin-top:-600px;
 }
 
@@ -93,7 +97,8 @@ height: 50px ;
     margin-inline-end:15px ;
 }
 
-.canvas-cotainer{
+.canvas-container{
+
     position: relative;
 }
 
