@@ -296,3 +296,7 @@ function renderSavedMemes() {
 
 
 
+function toggleMenu(){
+document.body.classList.toggle('open-menu');
+    // document.querySelector('.nav-list').classList.toggle('open-menu')
+}
