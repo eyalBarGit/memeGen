@@ -57,8 +57,7 @@ function onSelectImg(id) {
     setgSelectedImg(+id)
     toggleVisibility()
     clearInput();
-    drawImg();
-    clearCanvas();
+    // resetLines()
     renderCanvas()
 }
 
@@ -85,7 +84,7 @@ function getInputValue() {
 function onAddLine() {
     clearInput();
     increaseSelectedLineIdx();
-    var getLines = getgMemeLines();
+    // var getLines = getgMemeLines();
     var input = getInputValue();
     var memeLines = getFromMeme('Lines')
 
@@ -268,15 +267,19 @@ function getFont(elFont) {
 
 
 function onSaveMeme() {
-    const dataURI = gCanvas.toDataURL();
-    var savedMeme = {
-        id: gSelectedImg.id,
-        url: dataURI
-    }
-    gMemes.push(savedMeme)
-    saveToStorage(KEY, gMemes);
-    console.log(gMemes)
+    clearTextBg()
+    setTimeout(function () { 
 
+
+        const dataURL = gCanvas.toDataURL();
+        var savedMeme = {
+            id: gSelectedImg.id,
+            url: dataURL
+        }
+        gMemes.push(savedMeme)
+        saveToStorage(KEY, gMemes);
+        console.log(gMemes)
+    },1)
 }
 
 function renderSavedMemes() {
@@ -289,5 +292,7 @@ function renderSavedMemes() {
     document.querySelector('.saved').innerHTML = strHtml
 
 }
+
+
 
 

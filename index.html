@@ -14,14 +14,14 @@
 
     <header>
         <nav class="nav-bar flex ">
-            <div class="container flex space-around align-center">
+            <div class="container flex space-between align-center">
                 <div class="logo ">
                     <img src="./DESIGN/LOGO/LOGO.png" alt="">
                 </div>
                 <ul class="clean-list flex">
-                    <li onclick="getSection(this)" class="flex align-center justify-center">GALLERY</li>
-                    <li onclick="getSection(this)" class="flex align-center justify-center">MEMES</li>
-                    <li onclick="openAboutModal()" class="flex align-center justify-center">ABOUT</li>
+                    <li onclick="getSection(this)" class="flex align-center">GALLERY</li>
+                    <li onclick="getSection(this)" class="flex align-center">MEMES</li>
+                    <li onclick="openAboutModal()" class="flex align-center">ABOUT</li>
                 </ul>
         </nav>
         </div>
@@ -33,9 +33,11 @@
         <div class="keywords-section flex justify-center ">
             <input type="text" oninput="" placeholder="SEARCH">
         </div>
+        <div class="flex column align-center">
 
-        <div class="photo-container  ">
-            <div class="imgs flex justify-center wrap"></div>
+            <div class="photo-container flex  ">
+                <div class="imgs flex space-around wrap pointer "></div>
+            </div>
         </div>
     </section>
 
@@ -52,8 +54,8 @@
 
 
     <!-- MEME GENERATOR SECTION -->
-    <section class="meme-container container flex justify-center space-around hidden">
-        <!-- <div class="main-mem-container flex"> -->
+    <section class="meme-container container  hidden">
+        <div class="main-meme-container justify-center flex space-between">
 
             <!-- CANVAS -->
             <div class="canvas-container">
@@ -62,7 +64,7 @@
             </div>
 
             <!-- CONTROLLS -->
-            <div class="control-box flex column wrap  align-center">
+            <div class="control-box flex column align-center">
                 <div class="tools flex column ">
 
                     <div class="add-text-section bottom flex column">
@@ -71,40 +73,41 @@
                     <!-- <h4 class = "flex justify-center">Select - Line</h4> -->
              
                     <div class="line-select flex space-between bottom">
-                        <button class="far fa-trash-alt fa-2x" onclick="onDeleteLine()"></button>
-                        <button class="fas fa-plus fa-2x " onclick="onAddLine()"></button>
-                        <button class="fas fa-arrow-up fa-2x" onclick="onSelectLineUp()"></button>
-                        <button class="fas fa-arrow-down fa-2x" onclick="onSelectLineDown()"></button>
+                        <button class="far fa-trash-alt fa-2x pointer" onclick="onDeleteLine()"></button>
+                        <button class="fas fa-plus fa-2x pointer" onclick="onAddLine()"></button>
+                        <button class="fas fa-arrow-up fa-2x pointer" onclick="onSelectLineUp()"></button>
+                        <button class="fas fa-arrow-down fa-2x pointer" onclick="onSelectLineDown()"></button>
                     </div>
                     <!-- <h4 class = "flex justify-center">Move - Line</h4> -->
                     <div class="line-move flex space-around bottom">
                         
-                        <button class="fas fa-arrow-up fa-2x" onclick="onMoveLineUp()"></button>
-                        <button class="fas fa-arrow-down fa-2x" onclick="onMoveLineDown()"></button>
+                        <button class="fas fa-arrow-up fa-2x pointer" onclick="onMoveLineUp()"></button>
+                        <button class="fas fa-arrow-down fa-2x pointer" onclick="onMoveLineDown()"></button>
                     </div>
                     
                     
-                    <div class="align-text flex wrap space-between bottom">
-                        <button class="fas fa-align-left fa-2x" onclick="onLeftAlign()"></button>
-                        <button class="fas fa-align-center fa-2x" onclick="onCenterAlign()"></button>
-                        <button class="fas fa-align-right fa-2x " onclick="onRightAlign()"></button>
+                    <div class="align-text flex space-between bottom">
+                        <button class="fas fa-align-left fa-2x pointer" onclick="onLeftAlign()"></button>
+                        <button class="fas fa-align-center fa-2x pointer" onclick="onCenterAlign()"></button>
+                        <button class="fas fa-align-right fa-2x pointer " onclick="onRightAlign()"></button>
                     </div>
                     
-                    <div class="edit-text flex wrap bottom space-between">
+                    <div class="edit-text flex wrap space-around">
                         <label for=""><b>font<br>color:</b></label>
-                        <input type="color" class="font-color fas fa-2x" onchange="onSetFontColor(this)"></input>
+                        <input type="color" class="font-color fas fa-2x pointer" onchange="onSetFontColor(this)"></input>
                         <label for=""><b>stroke<br>color:</b></label>
-                        <input type="color" class="stroke-color fas fa-2x" onchange="onSetStrokeColor(this)"></input>
-
+                        <input type="color" class="stroke-color fas fa-2x pointer" onchange="onSetStrokeColor(this)"></input>
+                    </div>
+                    <div class="edit-text flex wrap bottom space-around">
                         <select onchange="getFont(this.value)" name="select-font">
                             <option value="Impact">Impact</option>
                             <option value="Ariel">Ariel</option>
                             <option value="Sans-serif">Sans-serif</option>
                         </select>
 
-                        <button class="font-size-up fas fa-2x" onclick="onIncreaseFontSize()"><img
+                        <button class="font-size-up fas fa-2x pointer" onclick="onIncreaseFontSize()"><img
                             src="https://img.icons8.com/ios-filled/30/000000/increase-font.png" /></button>
-                            <button class="font-size-down fas fa-2x" onclick="onDecreaseFontSize()"><img
+                            <button class="font-size-down fas fa-2x pointer" onclick="onDecreaseFontSize()"><img
                                 src="https://img.icons8.com/ios-filled/30/000000/decrease-font.png" /></button>
                             </div>
                             <div class="share-save-buttons ">
@@ -121,7 +124,7 @@
                         <div class="share-container"></div>
                 </div>
             </div>
-        <!-- </div> -->
+        </div>
     </section>
 
 

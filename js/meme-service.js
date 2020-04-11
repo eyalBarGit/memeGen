@@ -47,7 +47,7 @@ var gMeme = {
             fontColor: 'white',
             stroke: 'black',
             font:'Impact',
-            bgColor:'RGBA(0,0,0,0.0)'
+            bgColor:'rgb(255, 0, 0,0.53)'
         },
 
     ]
@@ -178,6 +178,8 @@ function clearCanvas() {
     let canvas = getgCanvas()
     let ctx = getgCtx();
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    console.log()
+    renderCanvas();
 }
 
 
@@ -203,11 +205,14 @@ function setLinesPosition() {
     
 function resizeCanvas(){
     let elContainer = document.querySelector('.canvas-container');
-    if(elContainer.offsetWidth < 1300){
 
         gCanvas.width = elContainer.offsetWidth;
-    }else{
-        gCanvas.width = 500
+        gCanvas.height = elContainer.offsetHeight;
+   
     // gCanvas.height = elContainer.offsetHeight;
 }
+function clearTextBg(){
+    setLines('bgColor', 'rgb(0, 0, 0,0.0)')
+    renderCanvas()
 }
+
