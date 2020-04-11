@@ -34,7 +34,7 @@ body {
 }
 
 canvas {
-    width:100%;
+    width: 100%;
     border: 2px solid black
 }
 
@@ -78,7 +78,6 @@ nav li:hover {
     height: auto;
 }
 
-
 .pointer {
     cursor: pointer;
 }
@@ -93,91 +92,90 @@ nav li:hover {
     outline: none;
 }
 
-
-
 /*------------------------- MEME SECTION --------------------------------*/
 
 .meme-container {
     margin-top: -650px;
 }
 
-.main-meme-container {
-  
-}
+.main-meme-container {}
 
 .control-box {
-    border:10px dotted lightsalmon;
+    border: 10px dotted lightsalmon;
     width: 500px;
     height: 500px;
 }
-.tools select{
-    -webkit-box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    
 
-    
-    
+.tools select {
+    -webkit-box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
 }
-.tools button{
-    -webkit-box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 6px 5px -4px rgba(0,0,0,0.75);
-    
+
+.tools button {
+    -webkit-box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 6px 5px -4px rgba(0, 0, 0, 0.75);
 }
-button:hover{
+
+button:hover {
     transform: scale(1.050);
 }
-a:hover{
+
+a:hover {
     transform: scale(1.050);
 }
-input[type="button"]:hover{
+
+input[type="button"]:hover {
     transform: scale(1.050);
 }
+
 .tools {
-      width: 100%;
-    padding:0 50px;
-    
+    width: 100%;
+    padding: 0 50px;
 }
-.fa-trash-alt{
+
+.fa-trash-alt {
     background-color: rgb(246, 93, 93);
 }
-.fa-plus{
+
+.fa-plus {
     background-color: rgb(136, 233, 144);
 }
-.fa-arrow-up{
+
+.fa-arrow-up {
     background-color: rgb(136, 210, 233);
 }
-.fa-arrow-down{
+
+.fa-arrow-down {
     background-color: rgb(211, 101, 183);
-    
 }
 
-
-.line-select{
+.line-select {
     background-color: lightslategray;
     border-radius: 20px;
-    width:100%;
-    padding:0.625rem 3.125rem;
+    width: 100%;
+    padding: 0.625rem 3.125rem;
 }
-.line-select button:not(:last-child){
-    margin-inline-end:0.3125rem ;
+
+.line-select button:not(:last-child) {
+    margin-inline-end: 0.3125rem;
 }
-.line-move{
+
+.line-move {
     background-color: rgb(132, 167, 202);
     border-radius: 20px;
-    width:100%;
-    padding:0.625rem 3.125rem;   
+    width: 100%;
+    padding: 0.625rem 3.125rem;
 }
-.align-text{
-  
+
+.align-text {
     border-radius: 20px;
-    width:100%;
-    padding:0.625rem 3.125rem;  
+    width: 100%;
+    padding: 0.625rem 3.125rem;
 }
 
-
-.edit-text input{
+.edit-text input {
     margin-bottom: 0.625rem;
 }
 
@@ -235,8 +233,9 @@ input[type="button"]:hover{
 }
 
 /* -------------------------- PHOTOS SECTION ------------------ */
-.photo-container{
-    padding:150px 0;
+
+.photo-container {
+    padding: 150px 0;
 }
 
 .photo-container img {
@@ -249,7 +248,6 @@ input[type="button"]:hover{
 
 .photo-container img:hover {
     transform: scale(1.015);
-    
 }
 
 .facebook-btn {
@@ -315,10 +313,76 @@ input[type="button"]:hover{
 }
 
 /*----------------- MEDIA QUERIES----------------------- */
+@media (max-width:1024px) {
+    .container{
+        width:740px;
+    }
 
-@media (max-width:414px){
-    .main-meme-container{
+    .logo-container{
+        justify-content: center;
+    } 
+    .main-meme-container {
+        margin-top:-1000px;
+    }
+
+
+
+}
+@media (max-width:900px) {
+    .logo-container{
+        justify-content: center;
+    } 
+    
+    .main-meme-container {
         flex-direction: column;
     }
-   
+    .nav-list {
+        margin:0;
+        position: fixed;
+        flex-direction: column;
+        justify-content: space-around;
+        right: 0;
+        top: 0;
+        width:200px;
+        padding-top:5.625rem;
+        height: 100vh;
+        z-index: 1;
+        background-color: rgba(218, 211, 211, 0.452);
+        
+    }
+    .nav-list li{
+        display: block;
+        margin:0  0 20px auto;
+        height: 50px;
+        width:100%; 
+        text-align: center;
+         margin-bottom:120px;
+    }
+    .nav-list li:hover{
+        background-color: gray;
+    }
+}
+
+@media (max-width:740px) {
+
+.container{
+    width:500px;
+}
+.photo-container img{
+    width:150px;
+    height: 150px;
+}
+}
+
+    @media (max-width:414px) {
+    .main-meme-container {
+        flex-direction: column;
+    }
+    .nav-list {
+        position: fixed;
+        flex-direction: column;
+        right: 0;
+        top: 0;
+        height: 100vh;
+    }
 }

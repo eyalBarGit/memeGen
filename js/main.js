@@ -123,7 +123,7 @@ function drawText() {
         // DRAW BACK-GROUND FOR TEXT
         ctx.beginPath()
         ctx.fillStyle = currLine.bgColor
-        ctx.fillRect(x - 255, y - currLine.size, getCanvasWidth(), currLine.size + 15);
+        ctx.fillRect(x - 250, y - currLine.size, getCanvasWidth(), currLine.size + 15);
         ctx.moveTo(0, y)
         ctx.lineTo(x + 100, y + 100)
         ctx.closePath();
