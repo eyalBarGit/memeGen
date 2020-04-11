@@ -8,9 +8,19 @@ function initPage() {
 
 
 function getSection(navItem) {
-    if (navItem.innerText === 'MEMES' || navItem.innerText === 'GALLERY') {
-        toggleVisibility()
+    if (navItem.innerText === 'MEMES') {
+        document.querySelector('.meme-container').classList.add('hidden')
+        document.querySelector('.gallery-container').classList.add('hidden')
+        document.querySelector('.saved-meme-container').classList.remove('hidden')
+        renderSavedMemes()
     }
+
+    else if (navItem.innerText === 'GALLERY') {
+        document.querySelector('.meme-container').classList.add('hidden')
+        document.querySelector('.gallery-container').classList.remove('hidden')
+        document.querySelector('.saved-meme-container').classList.add('hidden')
+    }
+
 }
 
 
@@ -24,10 +34,12 @@ function renderImgs() {
 }
 
 
+
+
 function initCanvas() {
     getgCanvas();
     getgCtx();
-    resizeCanvas()
+    // resizeCanvas()
     resetSelecteLineIdx()
     console.log('start length: ', gMeme.Lines.length)
 }
@@ -44,7 +56,9 @@ function onSelectImg(id) {
     setMeme('selectedImg', +id)
     setgSelectedImg(+id)
     toggleVisibility()
+    clearInput();
     drawImg();
+    clearCanvas();
     renderCanvas()
 }
 
@@ -74,7 +88,7 @@ function onAddLine() {
     var getLines = getgMemeLines();
     var input = getInputValue();
     var memeLines = getFromMeme('Lines')
-    // var lastLine = getLines[gMeme.Lines.length - 1]
+
     memeLines.push({
         posX: (getCanvasWidth() / 2),
         posY: setLinesPosition(),
@@ -85,14 +99,11 @@ function onAddLine() {
         side: 250,
         fontColor: 'black',
         stroke: 'white',
-        bgColor: 'RGBA(126,122,136,0.53)'
+        bgColor: 'RGBA(0,0,0,0.0)'
     })
 
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
-    setPrevLines('bgColor', 'RGBA(126,122,136,0.53)')
-    console.log('gMeme.Lines: ', gMeme.Lines)
-    console.log('gMeme.selectedLineIdx: ', gMeme.selectedLineIdx)
-    console.log('gMeme.Lines.length: ', gMeme.Lines.length)
+    setPrevLines('bgColor', 'RGBA(0,0,0,0.0)')
 
     renderCanvas();
 }
@@ -144,24 +155,23 @@ function drawImg() {
 }
 
 
-
 function onSetFontColor(elColor) {
     let fontColor = elColor.value
     setLines('fontColor', fontColor)
     renderCanvas()
 }
+
 function onSetStrokeColor(elColor) {
     let strokeColor = elColor.value
     setLines('stroke', strokeColor)
     renderCanvas()
 }
 
-
 function onSelectLineUp() {
     let lineIdx = getFromMeme('selectedLineIdx');
     if (lineIdx < 1) return
     decreaseSelectedLineIdx()
-    setNextLines('bgColor', 'RGBA(126,122,136,0.53)')
+    setNextLines('bgColor', 'RGBA(0,0,0,0.0)')
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
     renderCanvas()
     console.log('gMeme.selectedLineIdx: ', gMeme.selectedLineIdx)
@@ -173,34 +183,29 @@ function onSelectLineDown() {
     if (lineIdx > lines.length - 2) return
     increaseSelectedLineIdx()
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
-    setPrevLines('bgColor', 'RGBA(126,122,136,0.53)')
+    setPrevLines('bgColor', 'RGBA(0,0,0,0.0)')
     renderCanvas()
     console.log('gMeme.selectedLineIdx: ', gMeme.selectedLineIdx)
 }
 
 
 
-function onMoveLineDown(){
-   let linesPosition = getgMemeLinesKey('posY');
-   console.log('posY: ',linesPosition)
-    setLines('posY', linesPosition +15)
+function onMoveLineDown() {
+    let linesPosition = getgMemeLinesKey('posY');
+    console.log('posY: ', linesPosition)
+    setLines('posY', linesPosition + 15)
     renderCanvas();
 
 }
 
 
-function onMoveLineUp(){
-   let linesPosition =  getgMemeLinesKey('posY');
-   console.log('posY: ',linesPosition)
-    setLines('posY', linesPosition -15)
+function onMoveLineUp() {
+    let linesPosition = getgMemeLinesKey('posY');
+    console.log('posY: ', linesPosition)
+    setLines('posY', linesPosition - 15)
     renderCanvas();
 
 }
-
-
-
-
-
 
 
 function onIncreaseFontSize() {
@@ -223,16 +228,11 @@ function onDeleteLine() {
 
     getFromMeme('Lines').splice(idx, 1)
     decreaseSelectedLineIdx();
-    console.log('selectedLineIdx-onDelet: ', gMeme.selectedLineIdx)
 
     if (idx > 0) {
         setLines('bgColor', 'rgb(255, 0, 0,0.53)')
     }
-
- 
-
     renderCanvas()
-    console.log('Lines.length: ', gMeme.Lines.length)
 }
 
 
@@ -240,9 +240,7 @@ function onLeftAlign() {
     let input = getInputValue();
     input.style.direction = 'ltr';
     setLines('align', 'left')
-    setLines('side', 10)
-    let lines = getgMemeLines()
-    lines['side'] = 0
+    setLines('side', 0)
     renderCanvas()
 }
 function onRightAlign() {
@@ -250,15 +248,13 @@ function onRightAlign() {
     input.style.direction = 'rtl';
     setLines('align', 'right')
     setLines('side', 490)
-    let lines = getgMemeLines()
-    lines['side'] = 500
     renderCanvas()
 }
 function onCenterAlign() {
     let input = getInputValue();
     input.style.direction = 'center';
     setLines('align', 'center')
-    setLines('side', 250)
+    setLines('side', getCanvasWidth() / 2)
     renderCanvas()
 }
 
@@ -267,4 +263,31 @@ function getFont(elFont) {
     setLines('font', elFont)
     renderCanvas();
 }
+
+
+
+
+function onSaveMeme() {
+    const dataURI = gCanvas.toDataURL();
+    var savedMeme = {
+        id: gSelectedImg.id,
+        url: dataURI
+    }
+    gMemes.push(savedMeme)
+    saveToStorage(KEY, gMemes);
+    console.log(gMemes)
+
+}
+
+function renderSavedMemes() {
+    let savedMemes = loadFromStorage(KEY)
+    let strHtml = '';
+    strHtml += '<div class = "saved-memes flex wrap space-around">';
+    savedMemes.forEach((meme) => {
+        strHtml += `<img class =""style="width:200px; height:200px"src="${meme.url}"></img></div>`
+    })
+    document.querySelector('.saved').innerHTML = strHtml
+
+}
+
 

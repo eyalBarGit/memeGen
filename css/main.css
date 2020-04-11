@@ -1,165 +1,258 @@
 /* INITIALIZE */
-@font-face{
+
+@font-face {
     font-family: Impact;
-    src:url(/fonts/impact.ttf)
+    src: url(/fonts/impact.ttf)
 }
-*{
+
+* {
     box-sizing: border-box;
 }
-body{
-    margin:0;
+
+h4 {
+    margin: 0 0 10px 0;
 }
+
+body {
+    margin: 0;
+}
+
 .clean-list {
     list-style-type: none;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
-.container{
-    width:1300px;
-    margin:0 auto;
+.container {
+    position: relative;
+    width: 1300px;
+    margin: 0 auto;
 }
-.hidden{
-visibility: hidden;
+
+.hidden {
+    visibility: hidden;
 }
-canvas{
-    
+
+canvas {
     display: block;
-    border:2px solid black
+    border: 2px solid black
+}
 
+.width-100 {
+    width: 100%;
 }
-.width-100{
-    width:100%;
-}
-nav{
+
+nav {
     height: 130px;
     background-image: linear-gradient(to right top, #6ec0e3, #85c8e4, #9ad0e5, #aed7e7, #c2dfe9);
     border-bottom: 20px solid rgb(255, 176, 87)
 }
-nav li{
-  display:inline-block;
-  width:100px;
-  height: 100px;
+
+nav li {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
     font-size: 1.258rem;
     font-family: 'Montserrat', sans-serif;
 }
-nav li:not(:last-child){
-    margin-inline-end:5.875rem;
+
+nav li:not(:last-child) {
+    margin-inline-end: 5.875rem;
 }
-nav li:hover{
+
+nav li:hover {
     cursor: pointer;
-    box-shadow: inset 0px -7px 0px 0px rgba(255,182,13,1);
+    box-shadow: inset 0px -7px 0px 0px rgba(255, 182, 13, 1);
 }
-.logo img{
-    width:200px;
+
+.logo img {
+    width: 200px;
 }
-.bottom{
+
+.bottom {
     margin-block-end: 15px;
 }
 
-.text-line-container{
-    width:100%;
+.text-line-container {
+    width: 100%;
     height: auto;
 }
 
-.absolute-left{
-    position:absolute;
+.absolute-left {
+    position: absolute;
     font-family: Impact;
-    top:300px; 
+    top: 300px;
     font-size: 50px;
 }
-.pointer{
+
+.pointer {
     cursor: pointer;
 }
 
-
-/*------------------------- MEME SECTION --------------------------------*/
-.meme-container{
-    width:80vw;
-    /* border:2px solid green; */
-    position: relative;
-    margin-top:-600px;
+.fas {
+    border-radius: 5px;
+    border: 1px solid gray;
+    /* box-shadow: 2px 2px 12px 1px; */
 }
 
+.fas:focus {
+    outline: none;
+}
+
+.fas:hover {
+    cursor: pointer;
+}
+
+/*------------------------- MEME SECTION --------------------------------*/
+
+.meme-container {
+    width: 80vw;
+    /* background-color: green; */
+    position: relative;
+    margin-top: -640px;
+}
 
 .main-mem-container {
     position: relative;
-    width:100%;
+    width: 100%;
 }
 
-
-.control-box{
-    width:500px;
-    height:500px;
+.control-box {
+    border:10px dotted lightsalmon;
+    width: 500px;
+    height: 500px;
 }
-.tools{
+.tools select{
+    box-shadow: 2px 2px 12px 1px;
+}
+.tools button{
+    box-shadow: 2px 2px 12px 1px;
+}
+.tools {
     position: relative;
-    border:2px solid pink;
-    width: 50%; 
+    /* border: 2px solid pink; */
+    width: 70%;
+    height: 100%;
+    
+}
+.fa-trash-alt{
+    background-color: rgb(246, 93, 93);
+    /* color:white */
+}
+.fa-plus{
+    background-color: rgb(136, 233, 144);
+}
+.fa-arrow-up{
+    background-color: rgb(136, 210, 233);
+}
+.fa-arrow-down{
+    background-color: rgb(211, 101, 183);
+    
 }
 
-.tools  input{
-height: 50px ;
-border-radius: 10px;
-border:1px solid gray;
+
+.line-select{
+    background-color: lightslategray;
+    border-radius: 20px;
+    width:100%;
+    padding:10px 50px;
+}
+.line-move{
+    background-color: rgb(132, 167, 202);
+    border-radius: 20px;
+    width:100%;
+    padding:10px 50px;    
+}
+.align-text{
+  
+    border-radius: 20px;
+    width:100%;
+    padding:10px 50px;    
+}
+.edit-text {
+    padding:10px 50px;    
+
+}
+.edit-text input{
+    margin-bottom: 10px;
 }
 
-.txt-input::placeholder{
+.tools input {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.txt-input::placeholder {
     font-family: 'impact';
     letter-spacing: 2px;
-    padding-left:3.875rem;
+    padding-left: 3.875rem;
 }
 
-.tools  input:focus{
-   outline: none; 
-}
-.btn-tool-box{
-    width:50px;
-    height: 40px;
-}
-.share-save-buttons button:not(:last-child){
-    margin-inline-end:15px ;
-}
-
-.canvas-container{
-    position: relative;
-width:50%;
-/* height: 100%; */
-}
-.fas{
-     border-radius: 5px; 
-    border:1px solid gray;
-}
-.fas:focus{
+.tools input:focus {
     outline: none;
 }
-.fas:hover{
-    cursor: pointer;
+
+.btn-tool-box {
+    width: 50px;
+    height: 40px;
 }
 
+.share-save-buttons form {
+    width: 100%;
+}
+
+/*-------------- CANVAS SECTION --------*/
+
+.canvas-container {
+    position: relative;
+    width: 50%;
+    /* height: 100%; */
+}
+
+/* -------- SAVED MEME SECTION --------- */
+
+.saved-meme-container {
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    top: 150px;
+    left: 2rem;
+}
+
+.saved-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.saved img {
+    margin-inline-end: 10px;
+}
 
 /* -------------------------- PHOTOS SECTION ------------------ */
-.photo-container img{
-    width:210px;
+
+.photo-container img {
+    width: 210px;
     height: 205px;
-   margin-inline-end: 5px;
-   margin-block-end: 5px;
-   object-fit: cover;
-   
+    margin-inline-end: 5px;
+    margin-block-end: 5px;
+    object-fit: cover;
 }
 
-
-.photo-container img:hover{
+.photo-container img:hover {
     transform: scale(1.015);
     cursor: pointer;
 }
 
-.facebook-btn{
+.facebook-btn {
     display: inline-block;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
+    ;
 }
 
-.btn{
+.btn {
     background: #4267b2;
     border: 1px solid #4267b2;
     color: #fff;
@@ -173,42 +266,47 @@ width:50%;
     text-decoration: none;
 }
 
-
-
 /* --------------FLEX HELPERS------------------- */
-.flex{
-    display:flex;
+
+.flex {
+    display: flex;
 }
-.space-around{
+
+.space-around {
     justify-content: space-around;
 }
-.space-between{
+
+.space-between {
     justify-content: space-between;
 }
-.column{
+
+.column {
     flex-direction: column;
 }
-.justify-center{
+
+.justify-center {
     justify-content: center;
 }
-.justify-start{
+
+.justify-start {
     justify-content: flex-start;
 }
-.align-center{
+
+.align-center {
     align-items: center;
 }
-.align-end{
+
+.align-end {
     align-items: flex-end;
 }
-.wrap{
+
+.wrap {
     flex-wrap: wrap;
 }
-.nowrap{
+
+.nowrap {
     flex-wrap: nowrap;
 }
-
-
-
 
 /*----------------- MEDIA QUERIES----------------------- */
 

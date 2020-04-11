@@ -3,6 +3,9 @@ var gCanvas = document.querySelector('#my-canvas');;
 var gCtx = gCanvas.getContext('2d');
 var gSelectedImg;
 var gFont = 'Impact';
+const KEY = 'gMeme'
+var gMemes = [];
+
 
 
 var gImgs = [
@@ -44,7 +47,7 @@ var gMeme = {
             fontColor: 'white',
             stroke: 'black',
             font:'Impact',
-            bgColor:'RGBA(126,122,136,0.53)'
+            bgColor:'RGBA(0,0,0,0.0)'
         },
 
     ]
@@ -92,6 +95,10 @@ function getgMemeLines() {
     return gMeme.Lines
 }
 
+function getgMemes(){
+    return gMeme
+}
+
 function setgSelectedImg(id) {
     gSelectedImg = getItemById(id)
 }
@@ -130,6 +137,8 @@ function getgFont() {
 
 function downloadImg(elLink) {
     let imgContent = gCanvas.toDataURL('image/jpeg');
+    console.log(imgContent);
+    
     elLink.href = imgContent
 }
 
@@ -169,7 +178,6 @@ function clearCanvas() {
     let canvas = getgCanvas()
     let ctx = getgCtx();
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
 }
 
 
@@ -195,8 +203,11 @@ function setLinesPosition() {
     
 function resizeCanvas(){
     let elContainer = document.querySelector('.canvas-container');
-    gCanvas.width = elContainer.offsetWidth;
+    if(elContainer.offsetWidth < 1300){
+
+        gCanvas.width = elContainer.offsetWidth;
+    }else{
+        gCanvas.width = 500
     // gCanvas.height = elContainer.offsetHeight;
-
-
+}
 }
