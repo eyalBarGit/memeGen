@@ -31,7 +31,7 @@ var gKeywords = { 'happy': 12, 'funcky puk': 1 }
 
 var gMeme = {
     selectedImg: 1,
-    selectedLineIdx: 0,
+    selectedLineIdx: 1,
     Lines: [
         {
             posX: gCanvas.offsetWidth / 2,
@@ -43,6 +43,7 @@ var gMeme = {
             side:250,
             fontColor: 'white',
             stroke: 'black',
+            font:'Impact',
             bgColor:'RGBA(126,122,136,0.53)'
         },
 
@@ -74,11 +75,11 @@ function getFromMeme(key) {
 function setLines(key, value) {
     gMeme.Lines[gMeme.selectedLineIdx][key] = value
 }
-function clearPrevLines(key, value) {
-   
+function setPrevLines(key, value) {
+   if(gMeme.selectedLineIdx === 0) return
     gMeme.Lines[gMeme.selectedLineIdx-1][key] = value
 }
-function clearNextLines(key, value) {
+function setNextLines(key, value) {
     
     gMeme.Lines[gMeme.selectedLineIdx+1][key] = value
 }
@@ -177,4 +178,25 @@ function increaseSelectedLineIdx() {
 }
 function decreaseSelectedLineIdx() {
     gMeme.selectedLineIdx--
+}
+
+function setLinesPosition() {
+    if(gMeme.Lines.length === 0){
+        return getCanvasHeight() - 440
+    }else if(gMeme.Lines.length === 1){
+       return getCanvasHeight() - 30
+    }
+    else{
+        return getCanvasHeight()/2
+    }
+    }
+
+
+    
+function resizeCanvas(){
+    let elContainer = document.querySelector('.canvas-container');
+    gCanvas.width = elContainer.offsetWidth;
+    // gCanvas.height = elContainer.offsetHeight;
+
+
 }

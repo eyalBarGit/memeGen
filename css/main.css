@@ -7,7 +7,6 @@
     box-sizing: border-box;
 }
 body{
-    
     margin:0;
 }
 .clean-list {
@@ -24,9 +23,10 @@ body{
 visibility: hidden;
 }
 canvas{
-    /* display: block; */
-    /* margin: auto; */
+    
+    display: block;
     border:2px solid black
+
 }
 .width-100{
     width:100%;
@@ -73,13 +73,20 @@ nav li:hover{
 }
 
 
-/*-------- MEME SECTION ----------*/
+/*------------------------- MEME SECTION --------------------------------*/
 .meme-container{
     width:80vw;
     /* border:2px solid green; */
     position: relative;
     margin-top:-600px;
 }
+
+
+.main-mem-container {
+    position: relative;
+    width:100%;
+}
+
 
 .control-box{
     width:500px;
@@ -96,6 +103,16 @@ height: 50px ;
 border-radius: 10px;
 border:1px solid gray;
 }
+
+.txt-input::placeholder{
+    font-family: 'impact';
+    letter-spacing: 2px;
+    padding-left:3.875rem;
+}
+
+.tools  input:focus{
+   outline: none; 
+}
 .btn-tool-box{
     width:50px;
     height: 40px;
@@ -105,8 +122,9 @@ border:1px solid gray;
 }
 
 .canvas-container{
-
     position: relative;
+width:50%;
+/* height: 100%; */
 }
 .fas{
      border-radius: 5px; 
@@ -120,7 +138,7 @@ border:1px solid gray;
 }
 
 
-/* ---- PHOTOS SECTION ---- */
+/* -------------------------- PHOTOS SECTION ------------------ */
 .photo-container img{
     width:210px;
     height: 205px;
@@ -157,7 +175,7 @@ border:1px solid gray;
 
 
 
-/* ---FLEX HELPERS--- */
+/* --------------FLEX HELPERS------------------- */
 .flex{
     display:flex;
 }
@@ -188,3 +206,10 @@ border:1px solid gray;
 .nowrap{
     flex-wrap: nowrap;
 }
+
+
+
+
+/*----------------- MEDIA QUERIES----------------------- */
+
+/* @media screen (max-width:10) */

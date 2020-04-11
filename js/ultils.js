@@ -17,3 +17,7 @@ function loadFromStorage(key) {
 
 
 
+window.onresize = function() {
+    resizeCanvas()
+    this.renderCanvas()
+};
