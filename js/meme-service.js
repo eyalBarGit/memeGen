@@ -36,7 +36,7 @@ var gMeme = {
     selectedLineIdx: 0,
     Lines: [
         {
-            posX: gCanvas.offsetWidth / 2,
+            posX: (gCanvas.offsetWidth >= 500) ? (gCanvas.offsetWidth / 2) : (gCanvas.offsetWidth * 200),
             posY: gCanvas.offsetHeight +60,
             txt: 'Change text',
             size: 50,
@@ -210,4 +210,9 @@ function clearTextBg(){
 
 function getImgs(){
     return gImgs
+}
+
+
+function refresh (){
+    location.reload()
 }

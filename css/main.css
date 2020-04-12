@@ -267,6 +267,24 @@ canvas {
 }
 
 /* -------------------------- PHOTOS SECTION ------------------ */
+.modal{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:25px;
+    position: fixed;
+    /* width:50rem;
+    height: 25rem; */
+    top:25%;
+    bottom:25%;
+    left:25%;
+    right:25%;
+    background-color: rgba(255, 255, 255, 0.842);
+    z-index: 1;
+    text-align: center;
+    letter-spacing: 0.243rem;
+}
+.modal h2{
+    letter-spacing: 0.543rem;
+}
 
 .keywords-section {
     height: 130px;

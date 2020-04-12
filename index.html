@@ -12,15 +12,19 @@
 
 <body onload="initPage()">
     <section class="screen" onclick="toggleMenu()"></section>
-
+<section class="modal hidden flex column border-radius">
+    <h2>Hi There!</h2>
+    <p>This is my Meme generator.</p>
+    <p>Enjoy playing around here!</p>
+</section>
     <header>
         <nav class="nav-bar flex ">
             <div class="logo-container container flex space-between align-center">
                 <div class="logo ">
-                    <img src="./DESIGN/LOGO/LOGO.png" alt="">
+                    <img onclick="refresh()" class="pointer" src="./DESIGN/LOGO/LOGO.png" alt="">
                 </div>
                 <ul class="nav-list clean-list flex">
-                    <li onclick="getSection(this)" class="flex align-center">GALLERY</li>
+                    <li onclick="refresh()" class="flex align-center">GALLERY</li>
                     <li onclick="getSection(this)" class="flex align-center">MEMES</li>
                     <li onclick="openAboutModal()" class="flex align-center">ABOUT</li>
                 </ul>

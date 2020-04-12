@@ -104,7 +104,7 @@ function drawText() {
         let side = currLine.side
         let text = currLine.txt;
         let ctx = getgCtx();
-        let x = currLine.posX
+        let x = (gCanvas.offsetWidth >= '500px') ? currLine.posX: (gCanvas.offsetWidth * 200)
         let y = currLine.posY
 
         // DRAW BACK-GROUND FOR TEXT
@@ -280,4 +280,9 @@ function filterImgs(el) {
     if (!inputValue) filteredImgs = gImgs
     renderImgs(filteredImgs)
 
+}
+
+
+function openAboutModal(){
+    document.querySelector('.modal').classList.toggle('hidden')
 }

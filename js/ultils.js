@@ -14,3 +14,8 @@ function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
 }
+
+
+window.addEventListener('resize', function(){
+    console.log(getCanvasWidth())
+})
