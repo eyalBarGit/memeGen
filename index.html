@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meme - Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body onload="initPage()">
-<section class="screen" onclick="toggleMenu()"></section>
+    <section class="screen" onclick="toggleMenu()"></section>
 
     <header>
         <nav class="nav-bar flex ">
@@ -29,9 +29,6 @@
         </div>
     </header>
 
-
-
-
     <!-- MEME GENERATOR SECTION -->
     <section class="meme-container container align-center justify-center hidden">
         <div class="main-meme-container flex align-center  space-between">
@@ -39,7 +36,6 @@
             <!-- CANVAS -->
             <div class="canvas-container">
                 <canvas id="my-canvas" height="500" width="500"></canvas>
-
             </div>
 
             <!-- CONTROLLS -->
@@ -49,78 +45,88 @@
                     <div class="add-text-section bottom flex column">
                         <input class="txt-input" oninput="onType()" type="text" placeholder="ADD TEXT HERE"></input>
                     </div>
-             
+
                     <div class="line-select flex space-between bottom">
-                        <button class="far fa-trash-alt fa-2x pointer shadow scale-up" onclick="onDeleteLine()"></button>
+                        <button class="far fa-trash-alt fa-2x pointer shadow scale-up"
+                            onclick="onDeleteLine()"></button>
                         <button class="fas fa-plus fa-2x pointer shadow scale-up" onclick="onAddLine()"></button>
-                        <button class="fas fa-arrow-up fa-2x pointer shadow scale-up" onclick="onSelectLineUp()"></button>
-                        <button class="fas fa-arrow-down fa-2x pointer shadow scale-up" onclick="onSelectLineDown()"></button>
+                        <button class="fas fa-arrow-up fa-2x pointer shadow scale-up"
+                            onclick="onSelectLineUp()"></button>
+                        <button class="fas fa-arrow-down fa-2x pointer shadow scale-up"
+                            onclick="onSelectLineDown()"></button>
                     </div>
                     <div class="line-move flex space-around bottom">
-                        
                         <button class="fas fa-arrow-up fa-2x pointer shadow scale-up" onclick="onMoveLineUp()"></button>
-                        <button class="fas fa-arrow-down fa-2x pointer shadow scale-up" onclick="onMoveLineDown()"></button>
+                        <button class="fas fa-arrow-down fa-2x pointer shadow scale-up"
+                            onclick="onMoveLineDown()"></button>
                     </div>
-                    
-                    
+
                     <div class="align-text flex space-between bottom">
-                        <button class="fas fa-align-left fa-2x pointer shadow scale-up" onclick="onLeftAlign()"></button>
-                        <button class="fas fa-align-center fa-2x pointer shadow scale-up" onclick="onCenterAlign()"></button>
-                        <button class="fas fa-align-right fa-2x pointer shadow scale-up" onclick="onRightAlign()"></button>
+                        <button class="fas fa-align-left fa-2x pointer shadow scale-up"
+                            onclick="onLeftAlign()"></button>
+                        <button class="fas fa-align-center fa-2x pointer shadow scale-up"
+                            onclick="onCenterAlign()"></button>
+                        <button class="fas fa-align-right fa-2x pointer shadow scale-up"
+                            onclick="onRightAlign()"></button>
                     </div>
-                    
+
                     <div class="edit-text flex wrap space-around">
                         <label for=""><b>font<br>color:</b></label>
-                        <input type="color" class="font-color fas fa-2x pointer shadow " onchange="onSetFontColor(this)"></input>
+                        <input type="color" class="font-color fas fa-2x pointer shadow "
+                            onchange="onSetFontColor(this)"></input>
                         <label for=""><b>stroke<br>color:</b></label>
-                        <input type="color" class="stroke-color fas fa-2x pointer shadow " onchange="onSetStrokeColor(this)"></input>
+                        <input type="color" class="stroke-color fas fa-2x pointer shadow "
+                            onchange="onSetStrokeColor(this)"></input>
                     </div>
-                    <div class="edit-text flex wrap bottom space-around">
+                    <div class="increase-font flex wrap bottom space-around">
                         <select onchange="getFont(this.value)" name="select-font">
                             <option value="Impact">Impact</option>
                             <option value="Ariel">Ariel</option>
                             <option value="Sans-serif">Sans-serif</option>
                         </select>
-
-                        <button class="font-size-up fas fa-2x pointer shadow scale-up" onclick="onIncreaseFontSize()"><img
-                            src="https://img.icons8.com/ios-filled/30/000000/increase-font.png" /></button>
-                            <button class="font-size-down fas fa-2x pointer shadow scale-up" onclick="onDecreaseFontSize()"><img
+                        
+                        <button class="font-size-up fas fa-2x pointer shadow scale-up"
+                            onclick="onIncreaseFontSize()"><img
+                                src="https://img.icons8.com/ios-filled/30/000000/increase-font.png" /></button>
+                        <button class="font-size-down fas fa-2x pointer shadow scale-up"
+                            onclick="onDecreaseFontSize()"><img
                                 src="https://img.icons8.com/ios-filled/30/000000/decrease-font.png" /></button>
-                            </div>
-                            <div class="share-save-buttons ">
-                                <form class="flex space-around" action="" method="POST" enctype="multipart/form-data"
-                                onsubmit="uploadImg(this, event)">
-                                <input name="img" id="imgData" type="hidden" />
-                                <button class="facebook-btn pointer fab fa-facebook-square fa-2x shadow scale-up" type="submit"></button>
-                                <a class=" pointer fas fa-download fa-2x shadow scale-up" onclick=" downloadImg(this)"
+                    </div>
+                    
+                    <div class="share-save-buttons ">
+                        <form class="share-form flex space-around" action="" method="POST" enctype="multipart/form-data"
+                            onsubmit="uploadImg(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="facebook-btn pointer fab fa-facebook-square fa-2x shadow scale-up"
+                                type="submit"></button>
+                            <a class=" pointer fas fa-download fa-2x shadow scale-up" onclick=" downloadImg(this)"
                                 download="my-img.jpg"></a>
-                                <input class="fa fa-1x pointer shadow scale-up" type="button" onclick="onSaveMeme()" value="Save">
-                            </form>
-                            
-                        </div>
-                        <div class="share-container"></div>
+                            <input class="fa fa-1x pointer shadow scale-up" type="button" onclick="onSaveMeme()"
+                                value="Save">
+                        </form>
+
+                    </div>
+                    <div class="share-container"></div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- GALLERY SECTION ---------->
-    <section class="gallery-container container flex column ">
-        <div class="keywords-section flex justify-center ">
-            <input type="text" oninput="" placeholder="SEARCH">
+    <section class="gallery-container container flex align-center justify-center column ">
+        <div class="keywords-section container flex justify-center align-center">
+            <input class="filter-imgs" type="text" oninput="filterImgs(this)" placeholder="SEARCH BY KEWORD">
         </div>
-
-            <div class="photo-container flex  ">
-                <div class="imgs flex space-around wrap pointer "></div>
-            </div>
+        <div class="photo-container flex  ">
+            <div class="imgs flex space-around wrap pointer "></div>
+        </div>
     </section>
 
 
     <!------------ SAVED MEME SECTION ------------->
     <section class="saved-meme-container container flex justify-center hidden">
         <!-- <div class="saved-container "> -->
-            <div class="saved flex justify-center wrap"></div>
+        <div class="saved flex justify-center wrap"></div>
         <!-- </div> -->
     </section>
 

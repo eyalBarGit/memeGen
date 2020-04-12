@@ -145,9 +145,11 @@ canvas {
 
 /*------------------------------- TEXT CONTROL SECTION ----------------------------------*/
 .main-meme-container {
-    height: 90vh;
+    height: 80vh;
 }
-
+.edit-text input {
+    margin-bottom: 0.625rem;
+}
 .control-box {
     border: 10px dotted lightsalmon;
     width: 500px;
@@ -158,7 +160,7 @@ canvas {
     width: 100%;
     padding: 0 50px;
 }
-
+/* ------- BUTTON OF TOOL SECTION ------ */
 .fa-trash-alt {
     background-color: rgb(246, 93, 93);
 }
@@ -175,6 +177,7 @@ canvas {
     background-color: rgb(211, 101, 183);
 }
 
+/* ALIGN THE ITEMS OF TOOL SECTION */
 .line-select {
     background-color: lightslategray;
     border-radius: 20px;
@@ -190,34 +193,44 @@ canvas {
     background-color: rgb(132, 167, 202);
     border-radius: 20px;
     width: 100%;
-    padding: 0.625rem 3.125rem;
+    padding: 0.625rem 1.125rem;
 }
 
 .align-text {
     border-radius: 20px;
     width: 100%;
-    padding: 0.625rem 3.125rem;
+    padding: 0.625rem 5.125rem;
+    background-color: rgb(98, 196, 98);
 }
 
-.edit-text input {
+
+.edit-text{
+    padding:0 70px;
+    background-color: rgb(179, 126, 170);
+    border-radius: 20px;
     margin-bottom: 0.625rem;
 }
-
+.increase-font{
+    padding: 0.625rem 4.200rem;
+    
+    border-radius: 20px;
+    background-color: rgb(199, 122, 122);
+}
 .tools input {
     height: 50px;
     border-radius: 10px;
     border: 1px solid gray;
 }
-
-.txt-input::placeholder {
-    font-family: 'impact';
-    letter-spacing: 2px;
-    padding-left: 3.875rem;
-}
-
 .tools input:focus {
     outline: none;
 }
+.txt-input::placeholder {
+    font-family: 'impact';
+    letter-spacing: 2px;
+   text-align: center;
+}
+
+
 
 .btn-tool-box {
     width: 50px;
@@ -237,12 +250,7 @@ canvas {
    
     }
 
-/* .saved-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-} */
+
 
 .saved img {
     margin-inline-end: 10px;
@@ -250,15 +258,26 @@ canvas {
 
 /* -------------------------- PHOTOS SECTION ------------------ */
 
-.photo-container {
-    padding: 150px 0;
+.keywords-section{
+    height: 130px;
 }
 
+.keywords-section input{
+    height:50px;
+    border-radius: 20px;
+    width:250px;
+} 
+.keywords-section input::placeholder{
+   text-align: center;
+} 
+.keywords-section input:focus{
+   outline: none;
+} 
 .photo-container img {
     width: 155px;
     height: 155px;
     margin-inline-end: 5px;
-    margin-block-end: 5px;
+    margin-block-end: 15px;
     object-fit: cover;
 }
 
@@ -337,7 +356,18 @@ canvas {
     .logo-container {
         justify-content: center;
     }
-   
+    .align-text {
+        border-radius: 20px;
+        width: 100%;
+        padding: 0.625rem 1rem;
+    }
+    
+    .edit-text{
+        padding:0 0;
+    }
+    .share-form{
+        padding: 0 0;
+    }
 }
 
 @media (max-width:900px) {
@@ -382,6 +412,18 @@ canvas {
     .nav-list li:hover {
         background-color: rgb(122, 175, 206);
     }
+
+    .align-text {
+        border-radius: 20px;
+        width: 100%;
+        padding: 0.625rem 3.575rem;
+    }
+    .edit-text{
+        padding:0 2.575rem;
+    }
+    .share-form{
+        padding:0 1.575rem;
+    }
 }
 
 @media (max-width:740px) {
@@ -397,6 +439,15 @@ canvas {
         flex-direction: column;
         margin-top:-75px;
         align-items: center;
+    }
+    .align-text {
+        border-radius: 20px;
+        width: 100%;
+        padding: 0.625rem 2.875rem;
+    }
+    
+    .edit-text{
+        padding:0 1.475rem;
     }
 }
 
@@ -432,15 +483,56 @@ canvas {
     .photo-container img {
         width: 150px;
         height: 150px;
+       
     }
 
 
 }
 @media (max-width:414px) {
-
-line-move{
+.photo-container{
+    width:98vw;
+}
+.line-move{
     display: flex;
     justify-content: space-around;
     padding:0;
 }
+
+
+.align-text {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 100%;
+    
+}
+
+.edit-text{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+
+.line-select {
+ 
+    padding: 0.625rem 3.125rem;
+}
+
+.line-move {
+    background-color: rgb(132, 167, 202);
+    border-radius: 20px;
+    width: 100%;
+    padding: 0.625rem 1.125rem;
+}
+
+.increase-font{
+    padding:10px 0;
+display: flex;
+/* justify-content: center; */
+   
+}
+.tools {
+    padding:0;
+}
+
 }

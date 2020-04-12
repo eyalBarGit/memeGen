@@ -9,24 +9,24 @@ var gMemes = [];
 
 
 var gImgs = [
-    { id: 1, url: 'imgs/meme-imgs_(square)/1.jpg', kewords: ['happy'] },
-    { id: 2, url: 'imgs/meme-imgs_(square)/2.jpg', kewords: ['happy'] },
-    { id: 3, url: 'imgs/meme-imgs_(square)/3.jpg', kewords: ['happy'] },
-    { id: 4, url: 'imgs/meme-imgs_(square)/4.jpg', kewords: ['happy'] },
-    { id: 5, url: 'imgs/meme-imgs_(square)/5.jpg', kewords: ['happy'] },
-    { id: 6, url: 'imgs/meme-imgs_(square)/6.jpg', kewords: ['happy'] },
-    { id: 7, url: 'imgs/meme-imgs_(square)/7.jpg', kewords: ['happy'] },
-    { id: 8, url: 'imgs/meme-imgs_(square)/8.jpg', kewords: ['happy'] },
-    { id: 9, url: 'imgs/meme-imgs_(square)/9.jpg', kewords: ['happy'] },
-    { id: 10, url: 'imgs/meme-imgs_(square)/10.jpg', kewords: ['happy'] },
-    { id: 11, url: 'imgs/meme-imgs_(square)/11.jpg', kewords: ['happy'] },
-    { id: 12, url: 'imgs/meme-imgs_(square)/12.jpg', kewords: ['happy'] },
-    { id: 13, url: 'imgs/meme-imgs_(square)/13.jpg', kewords: ['happy'] },
-    { id: 14, url: 'imgs/meme-imgs_(square)/14.jpg', kewords: ['happy'] },
-    { id: 15, url: 'imgs/meme-imgs_(square)/15.jpg', kewords: ['happy'] },
-    { id: 16, url: 'imgs/meme-imgs_(square)/16.jpg', kewords: ['happy'] },
-    { id: 17, url: 'imgs/meme-imgs_(square)/17.jpg', kewords: ['happy'] },
-    { id: 18, url: 'imgs/meme-imgs_(square)/18.jpg', kewords: ['happy'] }
+    { id: 1, url: 'imgs/meme-imgs_(square)/1.jpg', keywords: ['trump'] },
+    { id: 2, url: 'imgs/meme-imgs_(square)/2.jpg', keywords: ['dog'] },
+    { id: 3, url: 'imgs/meme-imgs_(square)/3.jpg', keywords: ['baby'] },
+    { id: 4, url: 'imgs/meme-imgs_(square)/4.jpg', keywords: ['cat'] },
+    { id: 5, url: 'imgs/meme-imgs_(square)/5.jpg', keywords: ['baby'] },
+    { id: 6, url: 'imgs/meme-imgs_(square)/6.jpg', keywords: ['crazy'] },
+    { id: 7, url: 'imgs/meme-imgs_(square)/7.jpg', keywords: ['baby'] },
+    { id: 8, url: 'imgs/meme-imgs_(square)/8.jpg', keywords: ['crazy'] },
+    { id: 9, url: 'imgs/meme-imgs_(square)/9.jpg', keywords: ['baby'] },
+    { id: 10, url: 'imgs/meme-imgs_(square)/10.jpg', keywords: ['funny'] },
+    { id: 11, url: 'imgs/meme-imgs_(square)/11.jpg', keywords: ['funy'] },
+    { id: 12, url: 'imgs/meme-imgs_(square)/12.jpg', keywords: ['movies'] },
+    { id: 13, url: 'imgs/meme-imgs_(square)/13.jpg', keywords: ['movies'] },
+    { id: 14, url: 'imgs/meme-imgs_(square)/14.jpg', keywords: ['movies'] },
+    { id: 15, url: 'imgs/meme-imgs_(square)/15.jpg', keywords: ['movies'] },
+    { id: 16, url: 'imgs/meme-imgs_(square)/16.jpg', keywords: ['crazy'] },
+    { id: 17, url: 'imgs/meme-imgs_(square)/17.jpg', keywords: ['crazy'] },
+    { id: 18, url: 'imgs/meme-imgs_(square)/18.jpg', keywords: ['movies'] }
 
 ];
 
@@ -48,6 +48,7 @@ var gMeme = {
             stroke: 'black',
             font:'Impact',
             bgColor:'rgb(255, 0, 0,0.53)',
+            isDragging:false
             
         },
 
@@ -162,7 +163,7 @@ function uploadImg(elForm, ev) {
 
 function doUploadImg(elForm, onSuccess) {
     var formData = new FormData(elForm);
-    fetch('http://ca-upload.com/here/upload.php', {
+    fetch('https://ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
     })
@@ -213,3 +214,6 @@ function clearTextBg(){
     },0.5)
 }
 
+function getImgs(){
+    return gImgs
+}

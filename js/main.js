@@ -1,11 +1,10 @@
 'use strict'
 
 function initPage() {
-    renderImgs();
+    renderImgs(gImgs);
     initCanvas();
     // dragLines()
 }
-
 
 function getSection(navItem) {
     if (navItem.innerText === 'MEMES') {
@@ -23,10 +22,10 @@ function getSection(navItem) {
 
 }
 
+function renderImgs(imgs) {
 
-function renderImgs() {
     let strHtml = '';
-    gImgs.map(img => {
+    imgs.map(img => {
         strHtml += `<img id="${img.id}" class="square-photo transition scale-up" src="${img.url}" onclick="onSelectImg(this.id)" >`
     })
     document.querySelector('.imgs').innerHTML = strHtml
@@ -50,14 +49,13 @@ function onSelectImg(id) {
     toggleVisibility()
     clearInput();
     renderCanvas()
-    console.log('gMeme.Lines: ', gMeme.Lines)
 }
 
 function renderCanvas() {
     drawImg();
     setTimeout(() => {
         drawText()
-    },0)
+    }, 0)
 
 }
 
@@ -112,7 +110,7 @@ function drawText() {
         // DRAW BACK-GROUND FOR TEXT
         ctx.beginPath()
         ctx.fillStyle = currLine.bgColor
-        ctx.fillRect(x-=x, y - currLine.size, getCanvasWidth(), currLine.size + 15);
+        ctx.fillRect(x -= x, y - currLine.size, getCanvasWidth(), currLine.size + 15);
         ctx.moveTo(0, y)
         ctx.lineTo(x + 100, y + 100)
         ctx.closePath();
@@ -174,15 +172,12 @@ function onSelectLineDown() {
     renderCanvas()
 }
 
-
-
 function onMoveLineDown() {
     let linesPosition = getgMemeLinesKey('posY');
     setLines('posY', linesPosition + 15)
     renderCanvas();
 
 }
-
 
 function onMoveLineUp() {
     let linesPosition = getgMemeLinesKey('posY');
@@ -272,109 +267,46 @@ function renderSavedMemes() {
 
 }
 
-
 function toggleMenu() {
     document.body.classList.toggle('open-menu');
 }
 
+dragLines()
 
-// function dragLines() {
-//     var canvas = getgCanvas();
-//     var lines = getgMemeLines()
-//     var dragok = false;
-//     var BB = canvas.getBoundingClientRect();
-//     var offsetX = BB.left;
-//     var offsetY = BB.top;
-//     var startX;
-//     var startY;
-//     //     var WIDTH = getCanvasWidth;
-//     // var HEIGHT = getCanvasHeight;
-//     // handle mousedown events
-//     function myDown(e) {
+function dragLines() {
+    var canvas = getgCanvas()
+    var lineIdx;
 
-//         // tell the browser we're handling this mouse event
-//         e.preventDefault();
-//         e.stopPropagation();
+    
+    canvas.addEventListener('mousedown', function (ev) {
+        var lines = getgMemes
+        for (let i = 0; i < gMeme.Lines.length-1; i++) {
+            const line = array[i];
+            
+        }
 
-//         // get the current mouse position
-//         var mx = parseInt(e.clientX - offsetX);
-//         var my = parseInt(e.clientY - offsetY);
+        lineIdx = 1;
+        // console.log(ev)
+    })
+    canvas.addEventListener('mousemove', function (ev) {
+        
+        console.log(mousePosX)
+    })
+    canvas.addEventListener('mouseout', function () {
+        // console.log('left')
+    })
 
-//         // test each rect to see if mouse is inside
-//         dragok = false;
-//         for (var i = 0; i < lines.length; i++) {
-//             var r = lines[i];
-//             if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
-//                 // if yes, set that rects isDragging=true
-//                 dragok = true;
-//                 r.isDragging = true;
-//             }
-//         }
-//         // save the current mouse position
-//         startX = mx;
-//         startY = my;
-//     }
+ 
+}
 
 
-//     // handle mouseup events
-//     function myUp(e) {
-//         // tell the browser we're handling this mouse event
-//         e.preventDefault();
-//         e.stopPropagation();
+function filterImgs(el) {
+    let imgs = getImgs();
+    var inputValue = el.value
+    var filteredImgs = imgs.filter(function (img) {
+        return img.keywords.includes(inputValue)
+    })
+    if (!inputValue) filteredImgs = gImgs
+    renderImgs(filteredImgs)
 
-//         // clear all the dragging flags
-//         dragok = false;
-//         for (var i = 0; i < lines.length; i++) {
-//             lines[i].isDragging = false;
-//         }
-//     }
-
-
-//     // handle mouse moves
-//     function myMove(e) {
-//         // if we're dragging anything...
-//         if (dragok) {
-
-//             // tell the browser we're handling this mouse event
-//             e.preventDefault();
-//             e.stopPropagation();
-
-//             // get the current mouse position
-//             var mx = parseInt(e.clientX - offsetX);
-//             var my = parseInt(e.clientY - offsetY);
-
-//             // calculate the distance the mouse has moved
-//             // since the last mousemove
-//             var dx = mx - startX;
-//             var dy = my - startY;
-
-//             // move each rect that isDragging 
-//             // by the distance the mouse has moved
-//             // since the last mousemove
-//             for (var i = 0; i < lines.length; i++) {
-//                 var r = lines[i];
-//                 if (r.isDragging) {
-//                     r.x += dx;
-//                     r.y += dy;
-//                 }
-//             }
-
-//             // redraw the scene with the new rect positions
-//            renderCanvas()
-
-//             // reset the starting mouse position for the next mousemove
-//             startX = mx;
-//             startY = my;
-
-//         }
-//     }
-
-//     // listen for mouse events
-//     canvas.onmousedown = myDown;
-//     canvas.onmouseup = myUp;
-//     canvas.onmousemove = myMove;
-
-
-
-
-// }
+}
