@@ -30,8 +30,8 @@
     </header>
 
     <!-- MEME GENERATOR SECTION -->
-    <section class="meme-container container align-center justify-center hidden">
-        <div class="main-meme-container flex align-center  space-between">
+    <section class="meme-container container align-center justify-center hidden ">
+        <div class="main-meme-container flex align-center border-radius  space-between">
 
             <!-- CANVAS -->
             <div class="canvas-container">
@@ -41,11 +41,9 @@
             <!-- CONTROLLS -->
             <div class="control-box flex column align-center">
                 <div class="tools flex column ">
-
                     <div class="add-text-section bottom flex column">
                         <input class="txt-input" oninput="onType()" type="text" placeholder="ADD TEXT HERE"></input>
                     </div>
-
                     <div class="line-select flex space-between bottom">
                         <button class="far fa-trash-alt fa-2x pointer shadow scale-up"
                             onclick="onDeleteLine()"></button>
@@ -60,7 +58,6 @@
                         <button class="fas fa-arrow-down fa-2x pointer shadow scale-up"
                             onclick="onMoveLineDown()"></button>
                     </div>
-
                     <div class="align-text flex space-between bottom">
                         <button class="fas fa-align-left fa-2x pointer shadow scale-up"
                             onclick="onLeftAlign()"></button>
@@ -69,7 +66,6 @@
                         <button class="fas fa-align-right fa-2x pointer shadow scale-up"
                             onclick="onRightAlign()"></button>
                     </div>
-
                     <div class="edit-text flex wrap space-around">
                         <label for=""><b>font<br>color:</b></label>
                         <input type="color" class="font-color fas fa-2x pointer shadow "
@@ -84,7 +80,6 @@
                             <option value="Ariel">Ariel</option>
                             <option value="Sans-serif">Sans-serif</option>
                         </select>
-                        
                         <button class="font-size-up fas fa-2x pointer shadow scale-up"
                             onclick="onIncreaseFontSize()"><img
                                 src="https://img.icons8.com/ios-filled/30/000000/increase-font.png" /></button>
@@ -92,7 +87,6 @@
                             onclick="onDecreaseFontSize()"><img
                                 src="https://img.icons8.com/ios-filled/30/000000/decrease-font.png" /></button>
                     </div>
-                    
                     <div class="share-save-buttons ">
                         <form class="share-form flex space-around" action="" method="POST" enctype="multipart/form-data"
                             onsubmit="uploadImg(this, event)">
@@ -104,7 +98,6 @@
                             <input class="fa fa-1x pointer shadow scale-up" type="button" onclick="onSaveMeme()"
                                 value="Save">
                         </form>
-
                     </div>
                     <div class="share-container"></div>
                 </div>
@@ -113,21 +106,18 @@
     </section>
 
     <!-- GALLERY SECTION ---------->
-    <section class="gallery-container container flex align-center justify-center column ">
+    <section class="gallery-container flex align-center justify-center column ">
         <div class="keywords-section container flex justify-center align-center">
             <input class="filter-imgs" type="text" oninput="filterImgs(this)" placeholder="SEARCH BY KEWORD">
         </div>
-        <div class="photo-container flex  ">
+        <div class="photo-container container shadow flex">
             <div class="imgs flex space-around wrap pointer "></div>
         </div>
     </section>
 
-
     <!------------ SAVED MEME SECTION ------------->
     <section class="saved-meme-container container flex justify-center hidden">
-        <!-- <div class="saved-container "> -->
-        <div class="saved flex justify-center wrap"></div>
-        <!-- </div> -->
+        <div class="saved border-radius flex justify-center wrap"></div>
     </section>
 
     <script src="./js/meme-service.js"></script>

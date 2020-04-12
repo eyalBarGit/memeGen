@@ -3,7 +3,7 @@
 function initPage() {
     renderImgs(gImgs);
     initCanvas();
-    // dragLines()
+ 
 }
 
 function getSection(navItem) {
@@ -26,7 +26,7 @@ function renderImgs(imgs) {
 
     let strHtml = '';
     imgs.map(img => {
-        strHtml += `<img id="${img.id}" class="square-photo transition scale-up" src="${img.url}" onclick="onSelectImg(this.id)" >`
+        strHtml += `<img id="${img.id}" class="transition scale-up border-radius shadow" src="${img.url}" onclick="onSelectImg(this.id)" >`
     })
     document.querySelector('.imgs').innerHTML = strHtml
 
@@ -162,6 +162,8 @@ function onSelectLineUp() {
     renderCanvas()
 }
 
+
+
 function onSelectLineDown() {
     let lines = getFromMeme('Lines');
     let lineIdx = getFromMeme('selectedLineIdx');
@@ -244,8 +246,6 @@ function getFont(elFont) {
 function onSaveMeme() {
     clearTextBg()
     setTimeout(function () {
-
-
         const dataURL = gCanvas.toDataURL();
         var savedMeme = {
             id: gSelectedImg.id,
@@ -259,9 +259,9 @@ function onSaveMeme() {
 function renderSavedMemes() {
     let savedMemes = loadFromStorage(KEY)
     let strHtml = '';
-    strHtml += '<div class = "saved-memes flex wrap space-around">';
+    strHtml += '<div class = "saved-memes flex space-around">';
     savedMemes.forEach((meme) => {
-        strHtml += `<img class =""style="width:200px; height:200px"src="${meme.url}"></img></div>`
+        strHtml += `<img class ="border-radius shadow"style="width:200px; height:200px"src="${meme.url}"></img></div>`
     })
     document.querySelector('.saved').innerHTML = strHtml
 
@@ -270,35 +270,6 @@ function renderSavedMemes() {
 function toggleMenu() {
     document.body.classList.toggle('open-menu');
 }
-
-dragLines()
-
-function dragLines() {
-    var canvas = getgCanvas()
-    var lineIdx;
-
-    
-    canvas.addEventListener('mousedown', function (ev) {
-        var lines = getgMemes
-        for (let i = 0; i < gMeme.Lines.length-1; i++) {
-            const line = array[i];
-            
-        }
-
-        lineIdx = 1;
-        // console.log(ev)
-    })
-    canvas.addEventListener('mousemove', function (ev) {
-        
-        console.log(mousePosX)
-    })
-    canvas.addEventListener('mouseout', function () {
-        // console.log('left')
-    })
-
- 
-}
-
 
 function filterImgs(el) {
     let imgs = getImgs();

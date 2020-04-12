@@ -2,7 +2,6 @@
 var gCanvas = document.querySelector('#my-canvas');;
 var gCtx = gCanvas.getContext('2d');
 var gSelectedImg;
-var gFont = 'Impact';
 const KEY = 'gMeme'
 var gMemes = [];
 
@@ -30,7 +29,7 @@ var gImgs = [
 
 ];
 
-var gKeywords = { 'happy': 12, 'funcky puk': 1 }
+var gKeywords = { 'movies': 5, 'funcky puk': 1 }
 
 var gMeme = {
     selectedImg: 1,
@@ -56,9 +55,6 @@ var gMeme = {
 }
 
 
-
-
-
 function getItemById(itemId) {
     var item = gImgs.find(item => {
         if (itemId === item.id) {
@@ -79,13 +75,14 @@ function getFromMeme(key) {
 
 function setLines(key, value) {
     gMeme.Lines[gMeme.selectedLineIdx][key] = value
+
 }
 function setPrevLines(key, value) {
    if(gMeme.selectedLineIdx === 0) return
     gMeme.Lines[gMeme.selectedLineIdx-1][key] = value
 }
+
 function setNextLines(key, value) {
-    
     gMeme.Lines[gMeme.selectedLineIdx+1][key] = value
 }
 
@@ -132,20 +129,16 @@ function resetSelecteLineIdx() {
     gMeme.selectedLineIdx = 0;
 }
 
-function getgFont() {
-    return gFont
-}
-
 
 function downloadImg(elLink) {
+    clearTextBg()
     let imgContent = gCanvas.toDataURL('image/jpeg');
-    console.log(imgContent);
-    
     elLink.href = imgContent
+
 }
 
-
 function uploadImg(elForm, ev) {
+    clearTextBg()
     ev.preventDefault();
     document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
 
@@ -162,6 +155,7 @@ function uploadImg(elForm, ev) {
 }
 
 function doUploadImg(elForm, onSuccess) {
+    clearTextBg()
     var formData = new FormData(elForm);
     fetch('https://ca-upload.com/here/upload.php', {
         method: 'POST',
@@ -211,7 +205,7 @@ function clearTextBg(){
         
         setLines('bgColor', 'rgb(255, 0, 0,0.53)')
         renderCanvas()
-    },0.5)
+    },0)
 }
 
 function getImgs(){

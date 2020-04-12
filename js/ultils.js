@@ -14,10 +14,3 @@ function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
 }
-
-
-
-// window.onresize = function() {
-//     var width = document.body.clientWidth;
-//     console.log('width: ',width)
-// };
