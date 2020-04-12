@@ -3,7 +3,7 @@
 function initPage() {
     renderImgs();
     initCanvas();
-
+    // dragLines()
 }
 
 
@@ -27,46 +27,37 @@ function getSection(navItem) {
 function renderImgs() {
     let strHtml = '';
     gImgs.map(img => {
-        strHtml += `<img id="${img.id}" class="square-photo transition" src="${img.url}" onclick="onSelectImg(this.id)" >`
+        strHtml += `<img id="${img.id}" class="square-photo transition scale-up" src="${img.url}" onclick="onSelectImg(this.id)" >`
     })
     document.querySelector('.imgs').innerHTML = strHtml
 
 }
 
-
-
-
 function initCanvas() {
     getgCanvas();
     getgCtx();
-    // resizeCanvas()
     resetSelecteLineIdx()
-    console.log('start length: ', gMeme.Lines.length)
 }
-
 
 function toggleVisibility() {
     document.querySelector('.meme-container').classList.toggle('hidden')
     document.querySelector('.gallery-container').classList.toggle('hidden')
 }
 
-
-
 function onSelectImg(id) {
     setMeme('selectedImg', +id)
     setgSelectedImg(+id)
     toggleVisibility()
     clearInput();
-    // resetLines()
     renderCanvas()
+    console.log('gMeme.Lines: ', gMeme.Lines)
 }
-
 
 function renderCanvas() {
     drawImg();
     setTimeout(() => {
         drawText()
-    }, 0)
+    },0)
 
 }
 
@@ -84,12 +75,11 @@ function getInputValue() {
 function onAddLine() {
     clearInput();
     increaseSelectedLineIdx();
-    // var getLines = getgMemeLines();
     var input = getInputValue();
     var memeLines = getFromMeme('Lines')
 
     memeLines.push({
-        posX: (getCanvasWidth() / 2),
+        posX: (getCanvasWidth()),
         posY: setLinesPosition(),
         txt: input.value,
         size: 50,
@@ -98,12 +88,12 @@ function onAddLine() {
         side: 250,
         fontColor: 'black',
         stroke: 'white',
-        bgColor: 'RGBA(0,0,0,0.0)'
+        bgColor: 'rgb(255, 0, 0,0.53)',
+        isDragging: true
     })
 
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
     setPrevLines('bgColor', 'RGBA(0,0,0,0.0)')
-
     renderCanvas();
 }
 
@@ -111,7 +101,6 @@ function onAddLine() {
 
 function drawText() {
     var lines = getgMemeLines();
-    // var lastLine = lines[gMeme.Lines.length - 1]
     for (let i = 0; i < lines.length; i++) {
         const currLine = lines[i];
         let side = currLine.side
@@ -123,7 +112,7 @@ function drawText() {
         // DRAW BACK-GROUND FOR TEXT
         ctx.beginPath()
         ctx.fillStyle = currLine.bgColor
-        ctx.fillRect(x - 250, y - currLine.size, getCanvasWidth(), currLine.size + 15);
+        ctx.fillRect(x-=x, y - currLine.size, getCanvasWidth(), currLine.size + 15);
         ctx.moveTo(0, y)
         ctx.lineTo(x + 100, y + 100)
         ctx.closePath();
@@ -173,7 +162,6 @@ function onSelectLineUp() {
     setNextLines('bgColor', 'RGBA(0,0,0,0.0)')
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
     renderCanvas()
-    console.log('gMeme.selectedLineIdx: ', gMeme.selectedLineIdx)
 }
 
 function onSelectLineDown() {
@@ -184,14 +172,12 @@ function onSelectLineDown() {
     setLines('bgColor', 'rgb(255, 0, 0,0.53)')
     setPrevLines('bgColor', 'RGBA(0,0,0,0.0)')
     renderCanvas()
-    console.log('gMeme.selectedLineIdx: ', gMeme.selectedLineIdx)
 }
 
 
 
 function onMoveLineDown() {
     let linesPosition = getgMemeLinesKey('posY');
-    console.log('posY: ', linesPosition)
     setLines('posY', linesPosition + 15)
     renderCanvas();
 
@@ -200,7 +186,6 @@ function onMoveLineDown() {
 
 function onMoveLineUp() {
     let linesPosition = getgMemeLinesKey('posY');
-    console.log('posY: ', linesPosition)
     setLines('posY', linesPosition - 15)
     renderCanvas();
 
@@ -217,7 +202,6 @@ function onIncreaseFontSize() {
 function onDecreaseFontSize() {
     let size = getgMemeLinesKey('size')
     setLines('size', size -= 4)
-    console.log('size: ', size)
     renderCanvas()
 }
 
@@ -257,18 +241,14 @@ function onCenterAlign() {
     renderCanvas()
 }
 
-
 function getFont(elFont) {
     setLines('font', elFont)
     renderCanvas();
 }
 
-
-
-
 function onSaveMeme() {
     clearTextBg()
-    setTimeout(function () { 
+    setTimeout(function () {
 
 
         const dataURL = gCanvas.toDataURL();
@@ -278,8 +258,7 @@ function onSaveMeme() {
         }
         gMemes.push(savedMeme)
         saveToStorage(KEY, gMemes);
-        console.log(gMemes)
-    },1)
+    }, 1)
 }
 
 function renderSavedMemes() {
@@ -294,9 +273,108 @@ function renderSavedMemes() {
 }
 
 
-
-
-function toggleMenu(){
-document.body.classList.toggle('open-menu');
-    // document.querySelector('.nav-list').classList.toggle('open-menu')
+function toggleMenu() {
+    document.body.classList.toggle('open-menu');
 }
+
+
+// function dragLines() {
+//     var canvas = getgCanvas();
+//     var lines = getgMemeLines()
+//     var dragok = false;
+//     var BB = canvas.getBoundingClientRect();
+//     var offsetX = BB.left;
+//     var offsetY = BB.top;
+//     var startX;
+//     var startY;
+//     //     var WIDTH = getCanvasWidth;
+//     // var HEIGHT = getCanvasHeight;
+//     // handle mousedown events
+//     function myDown(e) {
+
+//         // tell the browser we're handling this mouse event
+//         e.preventDefault();
+//         e.stopPropagation();
+
+//         // get the current mouse position
+//         var mx = parseInt(e.clientX - offsetX);
+//         var my = parseInt(e.clientY - offsetY);
+
+//         // test each rect to see if mouse is inside
+//         dragok = false;
+//         for (var i = 0; i < lines.length; i++) {
+//             var r = lines[i];
+//             if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
+//                 // if yes, set that rects isDragging=true
+//                 dragok = true;
+//                 r.isDragging = true;
+//             }
+//         }
+//         // save the current mouse position
+//         startX = mx;
+//         startY = my;
+//     }
+
+
+//     // handle mouseup events
+//     function myUp(e) {
+//         // tell the browser we're handling this mouse event
+//         e.preventDefault();
+//         e.stopPropagation();
+
+//         // clear all the dragging flags
+//         dragok = false;
+//         for (var i = 0; i < lines.length; i++) {
+//             lines[i].isDragging = false;
+//         }
+//     }
+
+
+//     // handle mouse moves
+//     function myMove(e) {
+//         // if we're dragging anything...
+//         if (dragok) {
+
+//             // tell the browser we're handling this mouse event
+//             e.preventDefault();
+//             e.stopPropagation();
+
+//             // get the current mouse position
+//             var mx = parseInt(e.clientX - offsetX);
+//             var my = parseInt(e.clientY - offsetY);
+
+//             // calculate the distance the mouse has moved
+//             // since the last mousemove
+//             var dx = mx - startX;
+//             var dy = my - startY;
+
+//             // move each rect that isDragging 
+//             // by the distance the mouse has moved
+//             // since the last mousemove
+//             for (var i = 0; i < lines.length; i++) {
+//                 var r = lines[i];
+//                 if (r.isDragging) {
+//                     r.x += dx;
+//                     r.y += dy;
+//                 }
+//             }
+
+//             // redraw the scene with the new rect positions
+//            renderCanvas()
+
+//             // reset the starting mouse position for the next mousemove
+//             startX = mx;
+//             startY = my;
+
+//         }
+//     }
+
+//     // listen for mouse events
+//     canvas.onmousedown = myDown;
+//     canvas.onmouseup = myUp;
+//     canvas.onmousemove = myMove;
+
+
+
+
+// }

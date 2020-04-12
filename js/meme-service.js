@@ -34,11 +34,11 @@ var gKeywords = { 'happy': 12, 'funcky puk': 1 }
 
 var gMeme = {
     selectedImg: 1,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     Lines: [
         {
             posX: gCanvas.offsetWidth / 2,
-            posY: gCanvas.offsetHeight - 440,
+            posY: gCanvas.offsetHeight +60,
             txt: 'Change text',
             size: 50,
             align: 'center',
@@ -47,7 +47,8 @@ var gMeme = {
             fontColor: 'white',
             stroke: 'black',
             font:'Impact',
-            bgColor:'rgb(255, 0, 0,0.53)'
+            bgColor:'rgb(255, 0, 0,0.53)',
+            
         },
 
     ]
@@ -202,17 +203,13 @@ function setLinesPosition() {
     }
 
 
-    
-function resizeCanvas(){
-    let elContainer = document.querySelector('.canvas-container');
-
-        gCanvas.width = elContainer.offsetWidth;
-        gCanvas.height = elContainer.offsetHeight;
-   
-    // gCanvas.height = elContainer.offsetHeight;
-}
 function clearTextBg(){
     setLines('bgColor', 'rgb(0, 0, 0,0.0)')
     renderCanvas()
+    setTimeout(function (){
+        
+        setLines('bgColor', 'rgb(255, 0, 0,0.53)')
+        renderCanvas()
+    },0.5)
 }
 
