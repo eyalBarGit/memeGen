@@ -16,6 +16,9 @@ function loadFromStorage(key) {
 }
 
 
-window.addEventListener('resize', function(){
-    console.log(getCanvasWidth())
-})
+// window.addEventListener('resize', function(){
+//     console.log(`${window.innerWidth} px`)
+//     var canvas = getCanvas();
+//     console.log('canvas.height: ',canvas.offsetHeight)
+// })
+

@@ -24,7 +24,7 @@
                     <img onclick="refresh()" class="pointer" src="./DESIGN/LOGO/LOGO.png" alt="">
                 </div>
                 <ul class="nav-list clean-list flex">
-                    <li onclick="refresh()" class="flex align-center">GALLERY</li>
+                    <li onclick="getSection(this)" class="flex align-center">GALLERY</li>
                     <li onclick="getSection(this)" class="flex align-center">MEMES</li>
                     <li onclick="openAboutModal()" class="flex align-center">ABOUT</li>
                 </ul>
@@ -58,9 +58,9 @@
                             onclick="onSelectLineDown()"></button>
                     </div>
                     <div class="line-move flex space-around bottom">
-                        <button class="fas fa-arrow-up fa-2x pointer shadow scale-up" onclick="onMoveLineUp()"></button>
-                        <button class="fas fa-arrow-down fa-2x pointer shadow scale-up"
-                            onclick="onMoveLineDown()"></button>
+                        <button class="select-line-dn fas fa-arrow-up fa-2x pointer shadow scale-up" onmousedown="onMoveLineUp()"></button>
+                        <button class="select-line-dn fas fa-arrow-down fa-2x pointer shadow scale-up"
+                        onmousedown="onMoveLineDown()"></button>
                     </div>
                     <div class="align-text flex space-between bottom">
                         <button class="fas fa-align-left fa-2x pointer shadow scale-up"
@@ -124,9 +124,9 @@
         <div class="saved border-radius flex justify-center wrap"></div>
     </section>
 
+    <script src="./js/main-controller.js"></script>
     <script src="./js/meme-service.js"></script>
     <script src="./js/ultils.js"></script>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>

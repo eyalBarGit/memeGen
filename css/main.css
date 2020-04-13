@@ -384,7 +384,7 @@ canvas {
 
 @media (max-width:1024px) {
     .container {
-        width: 100vw;
+        width: 95vw;
     }
     .logo-container {
         justify-content: center;
@@ -405,7 +405,7 @@ canvas {
     }
 }
 
-@media (max-width:940px) {
+@media (max-width:990px) {
     .logo-container {
         justify-content: space-around;
     }
@@ -461,7 +461,7 @@ canvas {
 
 @media (max-width:740px) {
     .container {
-        width: 31.25rem;
+        width: 35.25rem;
     }
     .photo-container img {
         width: 150px;
@@ -482,7 +482,7 @@ canvas {
     }
 }
 
-@media (max-width:540px) {
+@media (max-width:640px) {
     .canvas-container {
         width: 90vw;
     }

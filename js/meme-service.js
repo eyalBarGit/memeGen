@@ -1,8 +1,7 @@
 'use strict'
-var gCanvas = document.querySelector('#my-canvas');;
-var gCtx = gCanvas.getContext('2d');
+var canvas = getCanvas()
 var gSelectedImg;
-const KEY = 'gMeme'
+const KEY = 'gMeme';
 var gMemes = [];
 
 
@@ -29,6 +28,9 @@ var gImgs = [
 
 ];
 
+function getImgs() {
+    return gImgs;
+}
 var gKeywords = { 'movies': 5, 'funcky puk': 1 }
 
 var gMeme = {
@@ -36,25 +38,48 @@ var gMeme = {
     selectedLineIdx: 0,
     Lines: [
         {
-            posX: (gCanvas.offsetWidth >= 500) ? (gCanvas.offsetWidth / 2) : (gCanvas.offsetWidth * 200),
-            posY: gCanvas.offsetHeight +60,
+            posX: canvas.offsetWidth,
+            posY: canvas.offsetHeight +60 ,
             txt: 'Change text',
             size: 50,
             align: 'center',
             font: 'Impact',
-            side:250,
+            side: 250,
             fontColor: 'white',
             stroke: 'black',
-            font:'Impact',
-            bgColor:'rgb(255, 0, 0,0.53)',
-            isDragging:false
-            
+            font: 'Impact',
+            bgColor: 'rgb(255, 0, 0,0.53)',
+            isDragging: false
+
         },
 
     ]
 }
 
 
+function pushMeme() {
+    var input = getInputValue();
+    gMeme.Lines.push({
+        posX: getCanvasWidth(),
+        posY: setLinesPosition(),
+        txt: input.value,
+        size: 50,
+        font: 'Impact',
+        align: 'center',
+        side: 250,
+        fontColor: 'black',
+        stroke: 'white',
+        bgColor: 'rgb(255, 0, 0,0.53)',
+        isDragging: false
+    })
+}
+
+function getMeme() {
+    return gMeme
+}
+function getMemeArr() {
+    return gMemes
+}
 function getItemById(itemId) {
     var item = gImgs.find(item => {
         if (itemId === item.id) {
@@ -78,52 +103,35 @@ function setLines(key, value) {
 
 }
 function setPrevLines(key, value) {
-   if(gMeme.selectedLineIdx === 0) return
-    gMeme.Lines[gMeme.selectedLineIdx-1][key] = value
+    if (gMeme.selectedLineIdx === 0) return
+    gMeme.Lines[gMeme.selectedLineIdx - 1][key] = value
 }
 
 function setNextLines(key, value) {
-    gMeme.Lines[gMeme.selectedLineIdx+1][key] = value
+    gMeme.Lines[gMeme.selectedLineIdx + 1][key] = value
 }
 
-function getgMemeLinesKey(key) {
+function getMemeLinesKey(key) {
     return gMeme.Lines[gMeme.selectedLineIdx][key]
 }
 
-function getgMemeLines() {
+function getMemeLines() {
     return gMeme.Lines
 }
 
-function getgMemes(){
+function getMemes() {
     return gMeme
 }
 
-function setgSelectedImg(id) {
-    gSelectedImg = getItemById(id)
+function getImgItem(id) {
+    gMeme.selectedImg = getItemById(id)
 }
 
-function getSelectedImg() {
-    return gSelectedImg
-}
 
-function getCanvasWidth() {
-    return gCanvas.offsetWidth
-}
-function getCanvasHeight() {
-    return gCanvas.offsetHeight
-}
-
-function getgCanvas() {
-    return gCanvas
-}
-function getgCtx() {
-    return gCtx;
-}
 function clearInput() {
     return getInputValue().value = '';
 
 }
-
 
 function resetSelecteLineIdx() {
     gMeme.selectedLineIdx = 0;
@@ -131,8 +139,9 @@ function resetSelecteLineIdx() {
 
 
 function downloadImg(elLink) {
+    var canvas = getCanvas();
     clearTextBg()
-    let imgContent = gCanvas.toDataURL('image/jpeg');
+    let imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
 
 }
@@ -171,7 +180,7 @@ function doUploadImg(elForm, onSuccess) {
 }
 
 function clearCanvas() {
-    let canvas = getgCanvas()
+    let canvas = getCanvas()
     let ctx = getgCtx();
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     console.log()
@@ -187,32 +196,32 @@ function decreaseSelectedLineIdx() {
 }
 
 function setLinesPosition() {
-    if(gMeme.Lines.length === 0){
-        return getCanvasHeight() - 440
-    }else if(gMeme.Lines.length === 1){
-       return getCanvasHeight() - 30
+    if (gMeme.Lines.length === 0) {
+            return getCanvasHeight() - 440
+        } if (gMeme.Lines.length === 1) {
+        return getCanvasHeight() - 30
     }
-    else{
-        return getCanvasHeight()/2
+    else {
+        return getCanvasHeight() / 2
     }
-    }
-
-
-function clearTextBg(){
-    setLines('bgColor', 'rgb(0, 0, 0,0.0)')
-    renderCanvas()
-    setTimeout(function (){
-        
-        setLines('bgColor', 'rgb(255, 0, 0,0.53)')
-        renderCanvas()
-    },0)
 }
 
-function getImgs(){
+
+function clearTextBg() {
+    setLines('bgColor', 'rgb(0, 0, 0,0.0)')
+    renderCanvas()
+    setTimeout(function () {
+
+        setLines('bgColor', 'rgb(255, 0, 0,0.53)')
+        renderCanvas()
+    }, 0)
+}
+
+function getImgs() {
     return gImgs
 }
 
 
-function refresh (){
+function refresh() {
     location.reload()
 }
